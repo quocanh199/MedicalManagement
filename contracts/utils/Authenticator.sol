@@ -5,6 +5,7 @@ import "../interface/IAuthenticator.sol";
 contract Authenticator is IAuthenticator {
     mapping(address => bool) private _subject;
     mapping(address => bool) private _administrator;
+    mapping(address => bool) private _investigator;
 
     constructor() {
         _administrator[msg.sender] = true;
@@ -20,9 +21,12 @@ contract Authenticator is IAuthenticator {
             _subject[_address] = false;
         if (_administrator[_address] && authType != AuthType.AD)
             _administrator[_address] = false;
+        if (_investigator[_address] && authType != AuthType.IV)
+            _investigator[_address] = false;
 
         if (authType == AuthType.SB) _subject[_address] = true;
         else if (authType == AuthType.AD) _administrator[_address] = true;
+        else if (authType == AuthType.IV) _investigator[_address] = true;
     }
 
     function checkAuth(address _address)
@@ -34,6 +38,7 @@ contract Authenticator is IAuthenticator {
         require(_address != address(0), "Address zero is not allowed");
         if (_subject[_address]) return AuthType.SB;
         else if (_administrator[_address]) return AuthType.AD;
+        else if (_investigator[_address]) return AuthType.IV;
         else return AuthType.NONE;
     }
 }

@@ -4,11 +4,10 @@ pragma solidity ^0.8.0;
 import "../utils/ERC721Base.sol";
 import "../utils/PCO.sol";
 import "../interface/IPCO.sol";
-import "../interface/IQuestion.sol";
+import "../interface/IMedicine.sol";
 import "../enum/LevelLock.sol";
 
-contract Medicine is ERC721Base, IQuestion {
-    address private pcoAddress;
+contract Medicine is ERC721Base, IMedicine {
     // mappping Medicine root ID to its update history
     mapping(uint256 => uint256[]) _medicineHistory;
     // mapping token id to Medicine hash
@@ -18,7 +17,7 @@ contract Medicine is ERC721Base, IQuestion {
 
     mapping(uint256 => bool) private _isMedicineLocked;
 
-    modifier _validQuestionList(
+    modifier _validMedicineList(
         uint256[] memory medicineIds,
         address senderAddress
     ) {
@@ -39,11 +38,9 @@ contract Medicine is ERC721Base, IQuestion {
         _;
     }
 
-    constructor(address _authAddress, address _pcoAddress)
+    constructor(address _authAddress)
         ERC721Base("Medicine", "MD", _authAddress)
-    {
-        pcoAddress = _pcoAddress;
-    }
+    {}
 
     function mint(
         bytes32 hashValue,
@@ -57,7 +54,6 @@ contract Medicine is ERC721Base, IQuestion {
         uint256 tokenId = super.mint(uri);
         _medicineHash[tokenId] = hashValue;
         _medicineHistory[tokenId].push(tokenId);
-        IPCO(pcoAddress).awardSubject(msg.sender, LevelLock.Medicine);
 
         _isMedicineHistory[tokenId] = false;
 
@@ -103,22 +99,10 @@ contract Medicine is ERC721Base, IQuestion {
         return _medicineHistory[medicineId];
     }
 
-    function checkDataIntegrity(uint256 medicineId, bytes32 hashValue)
-        public
-        view
-        returns (bool)
-    {
-        uint256 lastQuestionId = _medicineHistory[medicineId][
-            _medicineHistory[medicineId].length - 1
-        ];
-
-        return _medicineHash[lastQuestionId] == hashValue;
-    }
-
-    function setLockQuestion(
+    function setLockMedicine(
         uint256[] memory medicineIds,
         address senderAddress
-    ) external override _validQuestionList(medicineIds, senderAddress) {
+    ) external override _validMedicineList(medicineIds, senderAddress) {
         for (uint256 i = 0; i < medicineIds.length; i++) {
             _isMedicineLocked[medicineIds[i]] = true;
         }
