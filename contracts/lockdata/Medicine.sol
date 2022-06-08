@@ -8,10 +8,14 @@ import "../interface/IMedicine.sol";
 import "../enum/LevelLock.sol";
 
 contract Medicine is ERC721Base, IMedicine {
+    struct MedicineStruct {
+        string name;
+        uint256 amount;
+    }
     // mappping Medicine root ID to its update history
     mapping(uint256 => uint256[]) _medicineHistory;
     // mapping token id to Medicine hash
-    mapping(uint256 => bytes32) private _medicineHash;
+    mapping(uint256 => MedicineStruct) private _medicineData;
 
     mapping(uint256 => bool) private _isMedicineHistory;
 
@@ -43,18 +47,13 @@ contract Medicine is ERC721Base, IMedicine {
     {}
 
     function mint(
-        bytes32 hashValue,
-        string memory uri,
-        string memory data
+        string memory name,
+        uint256 amount,
+        string memory uri
     ) public onlySubject returns (uint256) {
-        require(
-            keccak256(abi.encodePacked(data)) == hashValue,
-            "Data Integrity fail"
-        );
         uint256 tokenId = super.mint(uri);
-        _medicineHash[tokenId] = hashValue;
+        _medicineData[tokenId] = MedicineStruct(name, amount);
         _medicineHistory[tokenId].push(tokenId);
-
         _isMedicineHistory[tokenId] = false;
 
         return tokenId;
@@ -62,9 +61,9 @@ contract Medicine is ERC721Base, IMedicine {
 
     function updateMedicine(
         uint256 medicineId,
-        bytes32 hashValue,
-        string memory uri,
-        string memory data
+        string memory name,
+        uint256 amount,
+        string memory uri
     ) public onlySubject {
         require(
             !_isMedicineHistory[medicineId],
@@ -78,13 +77,8 @@ contract Medicine is ERC721Base, IMedicine {
             "Not the owner of the Medicine"
         );
 
-        require(
-            keccak256(abi.encodePacked(data)) == hashValue,
-            "Data integrity failure"
-        );
-
         uint256 newMedicineId = super.mint(uri);
-        _medicineHash[newMedicineId] = hashValue;
+        _medicineData[newMedicineId] = MedicineStruct(name, amount);
         _medicineHistory[newMedicineId].push(newMedicineId);
         _isMedicineHistory[newMedicineId] = true;
 
@@ -106,5 +100,13 @@ contract Medicine is ERC721Base, IMedicine {
         for (uint256 i = 0; i < medicineIds.length; i++) {
             _isMedicineLocked[medicineIds[i]] = true;
         }
+    }
+
+    function getMedicine(uint256 medicineId)
+        public
+        view
+        returns (MedicineStruct memory)
+    {
+        return _medicineData[medicineId];
     }
 }

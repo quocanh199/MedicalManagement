@@ -7,6 +7,15 @@ import "../interface/ISubject.sol";
 import "../utils/PCO.sol";
 
 contract Subject is ERC721Base, ISubject {
+    struct PatientStruct {
+        string name;
+        string gender;
+        string dateOfBirth;
+        string patientAddress;
+        string phoneNumber;
+        uint256 dateCreated;
+        uint256 dateModified;
+    }
     mapping(uint256 => address) private _subjectAddress;
     // mapping token id to Subject hash
     mapping(uint256 => bytes32) private _subjectHash;

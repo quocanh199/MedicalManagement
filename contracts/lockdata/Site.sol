@@ -4,47 +4,31 @@ pragma solidity ^0.8.0;
 import "../utils/ERC721Base.sol";
 
 contract Site is ERC721Base {
+    struct SiteStruct {
+        string name;
+        string siteAddress;
+    }
     // mapping token id to Site hash
-    mapping(uint256 => bytes32) private _siteHash;
+    mapping(uint256 => SiteStruct) private _siteData;
     // mapping token
-    mapping(uint256 => uint256[]) private _subjectOfSite;
-
-    mapping(uint256 => uint256[]) private _investigatorOfSite;
+    mapping(uint256 => uint256[]) private _patientOfSite;
 
     constructor(address _authAddress) ERC721Base("Site", "ST", _authAddress) {}
 
     function mint(
-        bytes32 hashValue,
         string memory uri,
-        string memory data,
-        uint256[] memory listSubjectOfSite,
-        uint256[] memory listInvestigatorOfSite
+        string memory name,
+        string memory siteAddress,
+        uint256[] memory listPatientOfSite
     ) public onlyAdministrator returns (uint256) {
-        require(
-            keccak256(abi.encodePacked(data)) == hashValue,
-            "Data Integrity fail"
-        );
         uint256 tokenId = super.mint(uri);
-        _siteHash[tokenId] = hashValue;
-        _subjectOfSite[tokenId] = listSubjectOfSite;
-        _investigatorOfSite[tokenId] = listInvestigatorOfSite;
+        _siteData[tokenId] = SiteStruct(name, siteAddress);
+        _patientOfSite[tokenId] = listPatientOfSite;
 
         return tokenId;
     }
 
-    function checkDataIntegrity(uint256 siteId, bytes32 hashValue)
-        public
-        view
-        returns (
-            bool,
-            uint256[] memory,
-            uint256[] memory
-        )
-    {
-        return (
-            _siteHash[siteId] == hashValue,
-            _subjectOfSite[siteId],
-            _investigatorOfSite[siteId]
-        );
+    function getSite(uint256 tokenId) public view returns (SiteStruct memory) {
+        return _siteData[tokenId];
     }
 }
