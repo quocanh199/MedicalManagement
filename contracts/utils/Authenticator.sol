@@ -6,6 +6,7 @@ contract Authenticator is IAuthenticator {
     mapping(address => bool) private _subject;
     mapping(address => bool) private _administrator;
     mapping(address => bool) private _investigator;
+    mapping(address => bool) private _isContract;
 
     constructor() {
         _administrator[msg.sender] = true;

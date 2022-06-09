@@ -2,7 +2,6 @@
 pragma solidity ^0.8.0;
 
 import "../utils/ERC721Base.sol";
-import "../interface/ISubject.sol";
 
 contract TestResult is ERC721Base {
     struct TestStruct {

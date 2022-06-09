@@ -2,11 +2,8 @@
 pragma solidity ^0.8.0;
 
 import "../utils/ERC721Base.sol";
-import "../interface/IPCO.sol";
-import "../interface/ISubject.sol";
-import "../utils/PCO.sol";
 
-contract Subject is ERC721Base, ISubject {
+contract Subject is ERC721Base {
     struct PatientStruct {
         string name;
         string gender;
@@ -16,57 +13,48 @@ contract Subject is ERC721Base, ISubject {
         uint256 dateCreated;
         uint256 dateModified;
     }
-    mapping(uint256 => address) private _subjectAddress;
     // mapping token id to Subject hash
-    mapping(uint256 => bytes32) private _subjectHash;
+    mapping(uint256 => PatientStruct) private _patientData;
     // mapping token id to list Questionnaire id of Subject
-    mapping(uint256 => uint256[]) private _questionnaireOfSubject;
+    mapping(uint256 => uint256[]) private _visitOfPatient;
 
-    address private pcoAddress;
-
-    constructor(address _authAddress, address _pcoAddress)
+    constructor(address _authAddress)
         ERC721Base("Subject", "SB", _authAddress)
-    {
-        pcoAddress = _pcoAddress;
-    }
+    {}
 
     function mint(
-        bytes32 hashValue,
-        string memory uri,
-        string memory data,
-        uint256[] memory listId
+        string memory name,
+        string memory gender,
+        string memory dateOfBirth,
+        string memory patientAddress,
+        string memory phoneNumber,
+        string memory uri
     ) public onlySubject returns (uint256) {
-        require(
-            keccak256(abi.encodePacked(data)) == hashValue,
-            "Data Integrity fail"
-        );
         uint256 tokenId = super.mint(uri);
-        _subjectHash[tokenId] = hashValue;
-        _questionnaireOfSubject[tokenId] = listId;
-
-        IPCO(pcoAddress).awardSubject(msg.sender, LevelLock.Subject);
-        _subjectAddress[tokenId] = msg.sender;
-
+        _patientData[tokenId] = PatientStruct(
+            name,
+            gender,
+            dateOfBirth,
+            patientAddress,
+            phoneNumber,
+            block.timestamp,
+            block.timestamp
+        );
         return tokenId;
     }
 
-    function checkDataIntegrity(uint256 subjectId, bytes32 hashValue)
-        public
-        view
-        returns (bool, uint256[] memory)
-    {
-        return (
-            _subjectHash[subjectId] == hashValue,
-            _questionnaireOfSubject[subjectId]
-        );
+    function updateVisitOfPatient(uint256 patientId, uint256 visitId) public {
+        // code for check existence token
+
+        _visitOfPatient[patientId].push(visitId);
+        _patientData[patientId].dateModified = block.timestamp;
     }
 
-    function getSubjectAddress(uint256 tokenId)
-        external
+    function getPatient(uint256 patientId)
+        public
         view
-        override
-        returns (address)
+        returns (PatientStruct memory, uint256[] memory)
     {
-        return _subjectAddress[tokenId];
+        return (_patientData[patientId], _visitOfPatient[patientId]);
     }
 }

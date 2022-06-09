@@ -18,17 +18,23 @@ contract Site is ERC721Base {
     function mint(
         string memory uri,
         string memory name,
-        string memory siteAddress,
-        uint256[] memory listPatientOfSite
+        string memory siteAddress
     ) public onlyAdministrator returns (uint256) {
         uint256 tokenId = super.mint(uri);
         _siteData[tokenId] = SiteStruct(name, siteAddress);
-        _patientOfSite[tokenId] = listPatientOfSite;
 
         return tokenId;
     }
 
-    function getSite(uint256 tokenId) public view returns (SiteStruct memory) {
-        return _siteData[tokenId];
+    function updatePatientOfSite(uint256 siteId, uint256 patientId) public {
+        _patientOfSite[siteId].push(patientId);
+    }
+
+    function getSite(uint256 siteId)
+        public
+        view
+        returns (SiteStruct memory, uint256[] memory)
+    {
+        return (_siteData[siteId], _patientOfSite[siteId]);
     }
 }

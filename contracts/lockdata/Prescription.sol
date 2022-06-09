@@ -43,8 +43,11 @@ contract Prescription is ERC721Base {
     function getPrescription(uint256 prescriptionId)
         public
         view
-        returns (PrescriptionStruct memory)
+        returns (PrescriptionStruct memory, uint256[] memory)
     {
-        return _prescriptionData[prescriptionId];
+        return (
+            _prescriptionData[prescriptionId],
+            _medicineOfPrescription[prescriptionId]
+        );
     }
 }

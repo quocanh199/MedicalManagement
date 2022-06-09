@@ -2,19 +2,19 @@
 pragma solidity ^0.8.0;
 
 import "../utils/ERC721Base.sol";
-import "../interface/IPCO.sol";
+import "../interface/ICheckPoint.sol";
 
 contract Visit is ERC721Base {
     struct VisitStruct {
         uint256 timeCreated;
         uint256 fee;
     }
-
+    // address of CheckPoint contract
     address private checkPointAddress;
     // mapping token id to Visit hash
     mapping(uint256 => VisitStruct) private _visitData;
     // mapping study id to its prescription
-    mapping(uint256 => uint256[]) private _prescriptionOfVisit;
+    mapping(uint256 => uint256) private _prescriptionOfVisit;
     // mapping study id to its test result
     mapping(uint256 => uint256[]) private _testResultOfVisit;
 
@@ -27,7 +27,7 @@ contract Visit is ERC721Base {
     function mint(
         uint256 fee,
         string memory uri,
-        uint256[] memory listPrescriptionOfVisit,
+        uint256 listPrescriptionOfVisit,
         uint256[] memory listTestResultOfVisit
     ) public onlyAdministrator returns (uint256) {
         uint256 tokenId = super.mint(uri);
@@ -41,7 +41,7 @@ contract Visit is ERC721Base {
             tokenId
         ] = listTestResultOfVisit;
 
-        IPCO(checkPointAddress).awardSubject(msg.sender, LevelLock.Subject);
+        ICheckPoint(checkPointAddress).addCheckPoint(msg.sender);
 
         return tokenId;
     }
@@ -51,7 +51,7 @@ contract Visit is ERC721Base {
         view
         returns (
             VisitStruct memory,
-            uint256[] memory,
+            uint256,
             uint256[] memory
         )
     {
