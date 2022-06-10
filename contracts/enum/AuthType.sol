@@ -5,5 +5,6 @@ enum AuthType {
     NONE,
     IV,
     SB,
-    AD
+    AD,
+    DT
 }

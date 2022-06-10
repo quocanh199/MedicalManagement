@@ -9,6 +9,8 @@ contract Visit is ERC721Base {
         uint256 timeCreated;
         uint256 fee;
     }
+
+    address private patientAddress;
     // address of CheckPoint contract
     address private checkPointAddress;
     // mapping token id to Visit hash
@@ -60,5 +62,12 @@ contract Visit is ERC721Base {
             _prescriptionOfVisit[visitId],
             _testResultOfVisit[visitId]
         );
+    }
+
+    function setPatientContractAddress(address _patientAddress)
+        public
+        onlyAdministrator
+    {
+        patientAddress = _patientAddress;
     }
 }

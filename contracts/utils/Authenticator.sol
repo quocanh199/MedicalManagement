@@ -75,4 +75,12 @@ contract AuthenticatorHelper {
         );
         _;
     }
+
+    modifier onlyDoctor() {
+        require(
+            _IAuth.checkAuth(msg.sender) == AuthType.DT,
+            "Restriction for only Doctor"
+        );
+        _;
+    }
 }

@@ -18,7 +18,7 @@ contract TestResult is ERC721Base {
 
     function mint(string memory name, string memory result)
         public
-        onlyInvestigator
+        onlyDoctor
         returns (uint256)
     {
         uint256 tokenId = super.mint(name);

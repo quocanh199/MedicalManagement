@@ -13,14 +13,26 @@ contract Subject is ERC721Base {
         uint256 dateCreated;
         uint256 dateModified;
     }
+
+    address private visitAddress;
     // mapping token id to Subject hash
     mapping(uint256 => PatientStruct) private _patientData;
     // mapping token id to list Questionnaire id of Subject
     mapping(uint256 => uint256[]) private _visitOfPatient;
 
-    constructor(address _authAddress)
+    modifier onlyVisitContract() {
+        require(
+            msg.sender == visitAddress,
+            "Restriction for only Visit address"
+        );
+        _;
+    }
+
+    constructor(address _authAddress, address _visitAddress)
         ERC721Base("Subject", "SB", _authAddress)
-    {}
+    {
+        visitAddress = _visitAddress;
+    }
 
     function mint(
         string memory name,
@@ -29,7 +41,7 @@ contract Subject is ERC721Base {
         string memory patientAddress,
         string memory phoneNumber,
         string memory uri
-    ) public onlySubject returns (uint256) {
+    ) public onlyAdministrator returns (uint256) {
         uint256 tokenId = super.mint(uri);
         _patientData[tokenId] = PatientStruct(
             name,
@@ -43,9 +55,11 @@ contract Subject is ERC721Base {
         return tokenId;
     }
 
-    function updateVisitOfPatient(uint256 patientId, uint256 visitId) public {
-        // code for check existence token
-
+    function updateVisitOfPatient(uint256 patientId, uint256 visitId)
+        public
+        onlyVisitContract
+    {
+        require(_exists(patientId), "Update for nonexistent token");
         _visitOfPatient[patientId].push(visitId);
         _patientData[patientId].dateModified = block.timestamp;
     }

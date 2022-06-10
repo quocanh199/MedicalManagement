@@ -2,15 +2,23 @@
 pragma solidity ^0.8.0;
 
 import "../utils/ERC721Base.sol";
-import "../utils/PCO.sol";
-import "../interface/IPCO.sol";
+import "../interface/ICheckPoint.sol";
 import "../interface/IMedicine.sol";
-import "../enum/LevelLock.sol";
 
 contract Medicine is ERC721Base, IMedicine {
     struct MedicineStruct {
         string name;
         uint256 amount;
+    }
+
+    address private prescriptionAddress;
+
+    modifier onlyPrescriptionContract() {
+        require(
+            msg.sender == prescriptionAddress,
+            "Restriction for Prescription contract only"
+        );
+        _;
     }
     // mappping Medicine root ID to its update history
     mapping(uint256 => uint256[]) _medicineHistory;
@@ -50,7 +58,7 @@ contract Medicine is ERC721Base, IMedicine {
         string memory name,
         uint256 amount,
         string memory uri
-    ) public onlySubject returns (uint256) {
+    ) public onlyDoctor returns (uint256) {
         uint256 tokenId = super.mint(uri);
         _medicineData[tokenId] = MedicineStruct(name, amount);
         _medicineHistory[tokenId].push(tokenId);
@@ -64,7 +72,7 @@ contract Medicine is ERC721Base, IMedicine {
         string memory name,
         uint256 amount,
         string memory uri
-    ) public onlySubject {
+    ) public onlyDoctor {
         require(
             !_isMedicineHistory[medicineId],
             "Cannot update Medicine History"
@@ -96,7 +104,12 @@ contract Medicine is ERC721Base, IMedicine {
     function setLockMedicine(
         uint256[] memory medicineIds,
         address senderAddress
-    ) external override _validMedicineList(medicineIds, senderAddress) {
+    )
+        external
+        override
+        _validMedicineList(medicineIds, senderAddress)
+        onlyPrescriptionContract
+    {
         for (uint256 i = 0; i < medicineIds.length; i++) {
             _isMedicineLocked[medicineIds[i]] = true;
         }
@@ -108,5 +121,12 @@ contract Medicine is ERC721Base, IMedicine {
         returns (MedicineStruct memory)
     {
         return _medicineData[medicineId];
+    }
+
+    function setPrescriptionAddress(address _prescriptionAddress)
+        public
+        onlyAdministrator
+    {
+        prescriptionAddress = _prescriptionAddress;
     }
 }
