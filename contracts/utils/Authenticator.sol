@@ -4,22 +4,12 @@ import "../interface/IAuthenticator.sol";
 
 contract Authenticator is IAuthenticator {
     mapping(address => AuthType) private _role;
+
     mapping(address => ContractType) private _contractType;
     mapping(ContractType => address) private _contractAddress;
 
     constructor() {
         _role[msg.sender] = AuthType.AD;
-    }
-
-    function setContractAddress(address _address, ContractType _type) external {
-        require(
-            _role[msg.sender] == AuthType.AD,
-            "Address is not administrator"
-        );
-
-        require(_address != address(0), "Address zero is not allowed");
-
-        _contractType[_address] = _type;
     }
 
     function createDID(address _address, AuthType authType) external {
@@ -53,7 +43,16 @@ contract Authenticator is IAuthenticator {
         return _contractType[_address];
     }
 
-    function setContractAddress(address _address, ContractType _type)
+    function getContractAddress(ContractType _type)
+        external
+        view
+        override
+        returns (address)
+    {
+        return _contractAddress[_type];
+    }
+
+    function setContractType(address _address, ContractType _type)
         external
         override
     {
@@ -61,9 +60,13 @@ contract Authenticator is IAuthenticator {
             _role[msg.sender] == AuthType.AD,
             "Address is not administrator"
         );
-
         require(_address != address(0), "Address zero is not allowed");
+
+        address oldAddress = _contractAddress[_type];
+        _contractType[oldAddress] = ContractType.NONE;
+
         _contractAddress[_type] = _address;
+        _contractType[_address] = _type;
     }
 }
 

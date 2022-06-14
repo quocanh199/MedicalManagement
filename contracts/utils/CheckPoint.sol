@@ -28,7 +28,7 @@ contract PCO is ERC20, ICheckPoint, AuthenticatorHelper {
 
     function setVisitContractAddress(address _address)
         public
-        onlyAdministrator
+        restrictRole(AuthType.AD)
     {
         _visitContractAddress = _address;
     }

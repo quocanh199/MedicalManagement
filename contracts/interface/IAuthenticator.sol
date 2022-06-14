@@ -10,4 +10,11 @@ interface IAuthenticator {
         external
         view
         returns (ContractType);
+
+    function getContractAddress(ContractType _type)
+        external
+        view
+        returns (address);
+
+    function setContractType(address _address, ContractType _type) external;
 }
