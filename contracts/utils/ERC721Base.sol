@@ -22,12 +22,12 @@ contract ERC721Base is
         address _authenticator
     ) ERC721(tokenName, tokenSymbol) AuthenticatorHelper(_authenticator) {}
 
-    function mint(string memory _tokenURI) internal returns (uint256) {
+    function mint() internal returns (uint256) {
         _tokenIds.increment();
 
         uint256 newItemId = _tokenIds.current();
         _mint(_msgSender(), newItemId);
-        _setTokenURI(newItemId, _tokenURI);
+        // _setTokenURI(newItemId, _tokenURI);
 
         return newItemId;
     }

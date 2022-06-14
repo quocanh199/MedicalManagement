@@ -21,7 +21,7 @@ contract TestResult is ERC721Base {
         onlyDoctor
         returns (uint256)
     {
-        uint256 tokenId = super.mint(name);
+        uint256 tokenId = super.mint();
         _testResult[tokenId] = TestStruct(name, result, block.timestamp);
         return tokenId;
     }

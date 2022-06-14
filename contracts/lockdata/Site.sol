@@ -15,12 +15,12 @@ contract Site is ERC721Base {
 
     constructor(address _authAddress) ERC721Base("Site", "ST", _authAddress) {}
 
-    function mint(
-        string memory uri,
-        string memory name,
-        string memory siteAddress
-    ) public onlyAdministrator returns (uint256) {
-        uint256 tokenId = super.mint(uri);
+    function mint(string memory name, string memory siteAddress)
+        public
+        onlyAdministrator
+        returns (uint256)
+    {
+        uint256 tokenId = super.mint();
         _siteData[tokenId] = SiteStruct(name, siteAddress);
 
         return tokenId;

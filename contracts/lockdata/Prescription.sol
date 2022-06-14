@@ -23,12 +23,12 @@ contract Prescription is ERC721Base {
         medicineAddress = _medicineAddress;
     }
 
-    function mint(string memory uri, uint256[] memory listId)
+    function mint(uint256[] memory listId)
         public
         onlySubject
         returns (uint256)
     {
-        uint256 tokenId = super.mint(uri);
+        uint256 tokenId = super.mint();
         _prescriptionData[tokenId] = PrescriptionStruct(false, block.timestamp);
         _medicineOfPrescription[tokenId] = listId;
         IMedicine(medicineAddress).setLockMedicine(listId, msg.sender);

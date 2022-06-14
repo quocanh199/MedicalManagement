@@ -2,8 +2,9 @@
 pragma solidity ^0.8.0;
 
 import "../utils/ERC721Base.sol";
+import "../interface/IPatient.sol";
 
-contract Subject is ERC721Base {
+contract Subject is ERC721Base, IPatient {
     struct PatientStruct {
         string name;
         string gender;
@@ -19,6 +20,8 @@ contract Subject is ERC721Base {
     mapping(uint256 => PatientStruct) private _patientData;
     // mapping token id to list Questionnaire id of Subject
     mapping(uint256 => uint256[]) private _visitOfPatient;
+
+    mapping(string => uint256) private _idOfPatient;
 
     modifier onlyVisitContract() {
         require(
@@ -39,10 +42,9 @@ contract Subject is ERC721Base {
         string memory gender,
         string memory dateOfBirth,
         string memory patientAddress,
-        string memory phoneNumber,
-        string memory uri
+        string memory phoneNumber
     ) public onlyAdministrator returns (uint256) {
-        uint256 tokenId = super.mint(uri);
+        uint256 tokenId = super.mint();
         _patientData[tokenId] = PatientStruct(
             name,
             gender,
@@ -52,16 +54,28 @@ contract Subject is ERC721Base {
             block.timestamp,
             block.timestamp
         );
+
+        _idOfPatient[phoneNumber] = tokenId;
+
         return tokenId;
     }
 
     function updateVisitOfPatient(uint256 patientId, uint256 visitId)
-        public
+        external
+        override
         onlyVisitContract
     {
         require(_exists(patientId), "Update for nonexistent token");
         _visitOfPatient[patientId].push(visitId);
         _patientData[patientId].dateModified = block.timestamp;
+    }
+
+    function getPatientFromPhone(string memory _phone)
+        public
+        view
+        returns (uint256)
+    {
+        return _idOfPatient[_phone];
     }
 
     function getPatient(uint256 patientId)

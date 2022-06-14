@@ -54,12 +54,12 @@ contract Medicine is ERC721Base, IMedicine {
         ERC721Base("Medicine", "MD", _authAddress)
     {}
 
-    function mint(
-        string memory name,
-        uint256 amount,
-        string memory uri
-    ) public onlyDoctor returns (uint256) {
-        uint256 tokenId = super.mint(uri);
+    function mint(string memory name, uint256 amount)
+        public
+        restrictRole(AuthType.DT)
+        returns (uint256)
+    {
+        uint256 tokenId = super.mint();
         _medicineData[tokenId] = MedicineStruct(name, amount);
         _medicineHistory[tokenId].push(tokenId);
         _isMedicineHistory[tokenId] = false;
@@ -70,9 +70,8 @@ contract Medicine is ERC721Base, IMedicine {
     function updateMedicine(
         uint256 medicineId,
         string memory name,
-        uint256 amount,
-        string memory uri
-    ) public onlyDoctor {
+        uint256 amount
+    ) public restrictRole(AuthType.DT) {
         require(
             !_isMedicineHistory[medicineId],
             "Cannot update Medicine History"
@@ -85,7 +84,7 @@ contract Medicine is ERC721Base, IMedicine {
             "Not the owner of the Medicine"
         );
 
-        uint256 newMedicineId = super.mint(uri);
+        uint256 newMedicineId = super.mint();
         _medicineData[newMedicineId] = MedicineStruct(name, amount);
         _medicineHistory[newMedicineId].push(newMedicineId);
         _isMedicineHistory[newMedicineId] = true;
@@ -108,7 +107,7 @@ contract Medicine is ERC721Base, IMedicine {
         external
         override
         _validMedicineList(medicineIds, senderAddress)
-        onlyPrescriptionContract
+        restrictContract(ContractType.Prescription)
     {
         for (uint256 i = 0; i < medicineIds.length; i++) {
             _isMedicineLocked[medicineIds[i]] = true;
@@ -125,7 +124,7 @@ contract Medicine is ERC721Base, IMedicine {
 
     function setPrescriptionAddress(address _prescriptionAddress)
         public
-        onlyAdministrator
+        restrictRole(AuthType.AD)
     {
         prescriptionAddress = _prescriptionAddress;
     }

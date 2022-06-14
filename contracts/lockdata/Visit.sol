@@ -3,18 +3,19 @@ pragma solidity ^0.8.0;
 
 import "../utils/ERC721Base.sol";
 import "../interface/ICheckPoint.sol";
+import "../interface/IPatient.sol";
 
 contract Visit is ERC721Base {
-    struct VisitStruct {
-        uint256 timeCreated;
-        uint256 fee;
-    }
-
     address private patientAddress;
     // address of CheckPoint contract
     address private checkPointAddress;
+
+    address private prescriptionAddress;
+
+    address private testResultAddress;
+
     // mapping token id to Visit hash
-    mapping(uint256 => VisitStruct) private _visitData;
+    mapping(uint256 => uint256) private _visitCreatedTime;
     // mapping study id to its prescription
     mapping(uint256 => uint256) private _prescriptionOfVisit;
     // mapping study id to its test result
@@ -26,39 +27,43 @@ contract Visit is ERC721Base {
         checkPointAddress = _checkPointAddress;
     }
 
-    function mint(
-        uint256 fee,
-        string memory uri,
-        uint256 listPrescriptionOfVisit,
-        uint256[] memory listTestResultOfVisit
-    ) public onlyAdministrator returns (uint256) {
-        uint256 tokenId = super.mint(uri);
-        _visitData[tokenId] = VisitStruct(block.timestamp, fee);
+    function mint(uint256 patientId)
+        public
+        onlyAdministrator
+        returns (uint256)
+    {
+        uint256 tokenId = super.mint();
+        _visitCreatedTime[tokenId] = block.timestamp;
 
-        _prescriptionOfVisit[tokenId] = _prescriptionOfVisit[
-            tokenId
-        ] = listPrescriptionOfVisit;
-
-        _testResultOfVisit[tokenId] = _testResultOfVisit[
-            tokenId
-        ] = listTestResultOfVisit;
-
-        ICheckPoint(checkPointAddress).addCheckPoint(msg.sender);
+        IPatient(patientAddress).updateVisitOfPatient(patientId, tokenId);
+        // ICheckPoint(checkPointAddress).addCheckPoint(msg.sender);
 
         return tokenId;
+    }
+
+    function updatePrescriptionOfVisit(uint256 visitId, uint256 prescriptionId)
+        public
+    {
+        _prescriptionOfVisit[visitId] = prescriptionId;
+    }
+
+    function updateTestResultOfVisit(uint256 visitId, uint256 testResultId)
+        public
+    {
+        _testResultOfVisit[visitId].push(testResultId);
     }
 
     function getVisit(uint256 visitId)
         public
         view
         returns (
-            VisitStruct memory,
+            uint256,
             uint256,
             uint256[] memory
         )
     {
         return (
-            _visitData[visitId],
+            _visitCreatedTime[visitId],
             _prescriptionOfVisit[visitId],
             _testResultOfVisit[visitId]
         );
