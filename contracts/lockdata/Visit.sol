@@ -4,16 +4,18 @@ pragma solidity ^0.8.0;
 import "../utils/ERC721Base.sol";
 import "../interface/ICheckPoint.sol";
 import "../interface/IPatient.sol";
+import "../interface/IVisit.sol";
+import "../enum/ContractType.sol";
+import "../enum/AuthType.sol";
 
-contract Visit is ERC721Base {
+contract Visit is ERC721Base, IVisit {
     address private patientAddress;
-    // address of CheckPoint contract
-    address private checkPointAddress;
 
     address private prescriptionAddress;
 
     address private testResultAddress;
 
+    address private authAddress;
     // mapping token id to Visit hash
     mapping(uint256 => uint256) private _visitCreatedTime;
     // mapping study id to its prescription
@@ -21,15 +23,13 @@ contract Visit is ERC721Base {
     // mapping study id to its test result
     mapping(uint256 => uint256[]) private _testResultOfVisit;
 
-    constructor(address _authAddress, address _checkPointAddress)
-        ERC721Base("Visit", "VST", _authAddress)
-    {
-        checkPointAddress = _checkPointAddress;
+    constructor(address _authAddress) ERC721Base("Visit", "VST", _authAddress) {
+        authAddress = _authAddress;
     }
 
     function mint(uint256 patientId)
         public
-        onlyAdministrator
+        restrictRole(AuthType.Admin)
         returns (uint256)
     {
         uint256 tokenId = super.mint();
@@ -42,13 +42,17 @@ contract Visit is ERC721Base {
     }
 
     function updatePrescriptionOfVisit(uint256 visitId, uint256 prescriptionId)
-        public
+        external
+        override
+        restrictContract(ContractType.Prescription)
     {
         _prescriptionOfVisit[visitId] = prescriptionId;
     }
 
     function updateTestResultOfVisit(uint256 visitId, uint256 testResultId)
-        public
+        external
+        override
+        restrictContract(ContractType.TestResult)
     {
         _testResultOfVisit[visitId].push(testResultId);
     }
@@ -69,10 +73,15 @@ contract Visit is ERC721Base {
         );
     }
 
-    function setPatientContractAddress(address _patientAddress)
-        public
-        onlyAdministrator
-    {
-        patientAddress = _patientAddress;
+    function getAddress() public restrictRole(AuthType.Admin) {
+        patientAddress = IAuthenticator(authAddress).getContractAddress(
+            ContractType.Patient
+        );
+        prescriptionAddress = IAuthenticator(authAddress).getContractAddress(
+            ContractType.Prescription
+        );
+        testResultAddress = IAuthenticator(authAddress).getContractAddress(
+            ContractType.TestResult
+        );
     }
 }

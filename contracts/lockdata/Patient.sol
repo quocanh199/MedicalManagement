@@ -3,8 +3,11 @@ pragma solidity ^0.8.0;
 
 import "../utils/ERC721Base.sol";
 import "../interface/IPatient.sol";
+import "../interface/ISite.sol";
+import "../enum/AuthType.sol";
+import "../enum/ContractType.sol";
 
-contract Subject is ERC721Base, IPatient {
+contract Patient is ERC721Base, IPatient {
     struct PatientStruct {
         string name;
         string gender;
@@ -15,7 +18,9 @@ contract Subject is ERC721Base, IPatient {
         uint256 dateModified;
     }
 
+    address private authAddress;
     address private visitAddress;
+    address private siteAddress;
     // mapping token id to Subject hash
     mapping(uint256 => PatientStruct) private _patientData;
     // mapping token id to list Questionnaire id of Subject
@@ -23,18 +28,10 @@ contract Subject is ERC721Base, IPatient {
 
     mapping(string => uint256) private _idOfPatient;
 
-    modifier onlyVisitContract() {
-        require(
-            msg.sender == visitAddress,
-            "Restriction for only Visit address"
-        );
-        _;
-    }
-
-    constructor(address _authAddress, address _visitAddress)
-        ERC721Base("Subject", "SB", _authAddress)
+    constructor(address _authAddress)
+        ERC721Base("Patient", "PT", _authAddress)
     {
-        visitAddress = _visitAddress;
+        authAddress = _authAddress;
     }
 
     function mint(
@@ -42,8 +39,9 @@ contract Subject is ERC721Base, IPatient {
         string memory gender,
         string memory dateOfBirth,
         string memory patientAddress,
-        string memory phoneNumber
-    ) public onlyAdministrator returns (uint256) {
+        string memory phoneNumber,
+        uint256 siteId
+    ) public restrictRole(AuthType.Admin) returns (uint256) {
         uint256 tokenId = super.mint();
         _patientData[tokenId] = PatientStruct(
             name,
@@ -56,14 +54,14 @@ contract Subject is ERC721Base, IPatient {
         );
 
         _idOfPatient[phoneNumber] = tokenId;
-
+        ISite(siteAddress).updatePatientOfSite(siteId, tokenId);
         return tokenId;
     }
 
     function updateVisitOfPatient(uint256 patientId, uint256 visitId)
         external
         override
-        onlyVisitContract
+        restrictContract(ContractType.Visit)
     {
         require(_exists(patientId), "Update for nonexistent token");
         _visitOfPatient[patientId].push(visitId);
@@ -84,5 +82,11 @@ contract Subject is ERC721Base, IPatient {
         returns (PatientStruct memory, uint256[] memory)
     {
         return (_patientData[patientId], _visitOfPatient[patientId]);
+    }
+
+    function getAddress() public restrictRole(AuthType.Admin) {
+        siteAddress = Authenticator(authAddress).getContractAddress(
+            ContractType.Site
+        );
     }
 }

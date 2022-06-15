@@ -4,6 +4,8 @@ pragma solidity ^0.8.0;
 import "../utils/ERC721Base.sol";
 import "../interface/ICheckPoint.sol";
 import "../interface/IMedicine.sol";
+import "../interface/IAuthenticator.sol";
+import "../enum/ContractType.sol";
 
 contract Medicine is ERC721Base, IMedicine {
     struct MedicineStruct {
@@ -12,14 +14,8 @@ contract Medicine is ERC721Base, IMedicine {
     }
 
     address private prescriptionAddress;
+    address private authAddress;
 
-    modifier onlyPrescriptionContract() {
-        require(
-            msg.sender == prescriptionAddress,
-            "Restriction for Prescription contract only"
-        );
-        _;
-    }
     // mappping Medicine root ID to its update history
     mapping(uint256 => uint256[]) _medicineHistory;
     // mapping token id to Medicine hash
@@ -52,11 +48,13 @@ contract Medicine is ERC721Base, IMedicine {
 
     constructor(address _authAddress)
         ERC721Base("Medicine", "MD", _authAddress)
-    {}
+    {
+        authAddress = _authAddress;
+    }
 
     function mint(string memory name, uint256 amount)
         public
-        restrictRole(AuthType.DT)
+        restrictRole(AuthType.Doctor)
         returns (uint256)
     {
         uint256 tokenId = super.mint();
@@ -71,7 +69,7 @@ contract Medicine is ERC721Base, IMedicine {
         uint256 medicineId,
         string memory name,
         uint256 amount
-    ) public restrictRole(AuthType.DT) {
+    ) public restrictRole(AuthType.Doctor) {
         require(
             !_isMedicineHistory[medicineId],
             "Cannot update Medicine History"
@@ -122,10 +120,9 @@ contract Medicine is ERC721Base, IMedicine {
         return _medicineData[medicineId];
     }
 
-    function setPrescriptionAddress(address _prescriptionAddress)
-        public
-        restrictRole(AuthType.AD)
-    {
-        prescriptionAddress = _prescriptionAddress;
+    function getAddress() public restrictRole(AuthType.Admin) {
+        prescriptionAddress = IAuthenticator(authAddress).getContractAddress(
+            ContractType.Prescription
+        );
     }
 }

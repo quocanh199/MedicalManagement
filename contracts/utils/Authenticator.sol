@@ -9,12 +9,12 @@ contract Authenticator is IAuthenticator {
     mapping(ContractType => address) private _contractAddress;
 
     constructor() {
-        _role[msg.sender] = AuthType.AD;
+        _role[msg.sender] = AuthType.Admin;
     }
 
     function createDID(address _address, AuthType authType) external {
         require(
-            _role[msg.sender] == AuthType.AD,
+            _role[msg.sender] == AuthType.Admin,
             "Address is not administrator"
         );
 
@@ -57,7 +57,7 @@ contract Authenticator is IAuthenticator {
         override
     {
         require(
-            _role[msg.sender] == AuthType.AD,
+            _role[msg.sender] == AuthType.Admin,
             "Address is not administrator"
         );
         require(_address != address(0), "Address zero is not allowed");
@@ -78,41 +78,9 @@ contract AuthenticatorHelper {
         _IAuth = IAuthenticator(_authenticator);
     }
 
-    // modifier onlyInvestigator() {
-    //     require(
-    //         _IAuth.checkAuth(msg.sender) == AuthType.IV,
-    //         "Only investigator can call this function"
-    //     );
-    //     _;
-    // }
-
-    // modifier onlySubject() {
-    //     require(
-    //         _IAuth.checkAuth(msg.sender) == AuthType.SB,
-    //         "Only subject can call this function"
-    //     );
-    //     _;
-    // }
-
-    // modifier onlyAdministrator() {
-    //     require(
-    //         _IAuth.checkAuth(msg.sender) == AuthType.AD,
-    //         "Only administrator can call this function"
-    //     );
-    //     _;
-    // }
-
-    // modifier onlyDoctor() {
-    //     require(
-    //         _IAuth.checkAuth(msg.sender) == AuthType.DT,
-    //         "Restriction for only Doctor"
-    //     );
-    //     _;
-    // }
-
     modifier restrictRole(AuthType _type) {
         require(
-            _IAuth.checkAuth(address(this)) == _type,
+            _IAuth.checkAuth(msg.sender) == _type,
             "Restriction for only permitted role"
         );
         _;
@@ -120,7 +88,7 @@ contract AuthenticatorHelper {
 
     modifier restrictContract(ContractType _type) {
         require(
-            _IAuth.getContractType(address(this)) == _type,
+            _IAuth.getContractType(msg.sender) == _type,
             "Restriction for only permitted contract"
         );
         _;
