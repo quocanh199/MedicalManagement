@@ -2,8 +2,9 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-const userRouter = require("./routes/user");
-const adminRouter = require("./routes/admin");
+
+const medicineRouter = require("./routes/medicine");
+
 const cors = require("cors");
 const PORT = 8088;
 const swaggerUI = require("swagger-ui-express");
@@ -48,8 +49,10 @@ const loggerAuth = (req, res, next) => {
   next();
 };
 
-mainRouter.use("/vote", userRouter);
-mainRouter.use("/gov", adminRouter);
+// mainRouter.use("/vote", userRouter);
+// mainRouter.use("/gov", adminRouter);
+mainRouter.use("/medicine", medicineRouter);
+
 app.use("/api/", loggerAuth, mainRouter);
 app.use("/docs/", swaggerUI.serve, swaggerUI.setup(specs));
 

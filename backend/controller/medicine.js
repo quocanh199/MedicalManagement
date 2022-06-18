@@ -70,7 +70,7 @@ const getMedicine = async (req, res) => {
 };
 
 module.exports = {
-  lockData: mint,
+  mint,
   updateMedicine,
   getMedicineHistory,
   getMedicine,
