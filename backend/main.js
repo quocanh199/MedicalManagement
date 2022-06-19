@@ -4,6 +4,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const medicineRouter = require("./routes/medicine");
+const prescriptionRouter = require("./routes/prescription");
+const testResultRouter = require("./routes/testResult");
+const visitRouter = require("./routes/visit");
+const patientRouter = require("./routes/patient");
+const siteRouter = require("./routes/site");
 
 const cors = require("cors");
 const PORT = 8088;
@@ -49,9 +54,12 @@ const loggerAuth = (req, res, next) => {
   next();
 };
 
-// mainRouter.use("/vote", userRouter);
-// mainRouter.use("/gov", adminRouter);
 mainRouter.use("/medicine", medicineRouter);
+mainRouter.use("/prescription", prescriptionRouter);
+mainRouter.use("/testResult", testResultRouter);
+mainRouter.use("/visit", visitRouter);
+mainRouter.use("/patient", patientRouter);
+mainRouter.use("/site", siteRouter);
 
 app.use("/api/", loggerAuth, mainRouter);
 app.use("/docs/", swaggerUI.serve, swaggerUI.setup(specs));

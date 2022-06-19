@@ -38,8 +38,8 @@ const mint = async (req, res) => {
 
 const getPatientFromPhone = async (req, res) => {
   try {
-    const { phone } = req.query.phone;
-    const patientId = contract.methods.getPatientFromPhone(phone).call();
+    const { phoneNumber } = req.query.phoneNumber;
+    const patientId = contract.methods.getPatientFromPhone(phoneNumber).call();
     res.json(onSuccess(patientId));
   } catch (error) {
     console.error(error);

@@ -37,4 +37,4 @@ const getVisit = async (req, res) => {
   }
 };
 
-module.exports(mint, getVisit);
+module.exports = { mint, getVisit };

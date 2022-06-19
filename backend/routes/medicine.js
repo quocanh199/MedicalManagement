@@ -66,7 +66,7 @@ const {
  *                  type: int
  *                  description: ID of medicine
  *          example:
- *              address: 1
+ *              medicineId: 1
  *
  */
 
@@ -169,6 +169,6 @@ router.get("/getHistory", getMedicineHistory);
  *                          items:
  *                              $ref: '#/components/schemas/Get'
  */
-router.get("/getHistory", getMedicineHistory);
+router.get("/get", getMedicine);
 
 module.exports = router;
