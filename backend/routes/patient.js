@@ -11,7 +11,7 @@ const {
  * @swagger
  * components:
  *  schemas:
- *      Mint:
+ *      MintPatient:
  *          type: object
  *          required:
  *              - privateKey
@@ -39,6 +39,9 @@ const {
  *              phoneNumber:
  *                  type: string
  *                  description: phone number of Patient
+ *              siteId:
+ *                  type: number
+ *                  description: ID of Site Token
  *
  *          example:
  *              privateKey: ""
@@ -47,7 +50,8 @@ const {
  *              dateOfBirth: ""
  *              patientAddress: ""
  *              phoneNumber: ""
- *      GetID:
+ *              siteId: 1
+ *      GetPatientID:
  *          type: object
  *          required:
  *              - phoneNumber
@@ -57,13 +61,13 @@ const {
  *                  description: phone of Patient
  *          example:
  *              phoneNumber: ""
- *      Get:
+ *      GetPatient:
  *          type: object
  *          required:
  *              - patientId
  *          properties:
  *              patientId:
- *                  type: int
+ *                  type: number
  *                  description: ID of Patient
  *          example:
  *              patientId: 1
@@ -87,7 +91,7 @@ const {
  *            content:
  *              application/json:
  *                  schema:
- *                      $ref: '#/components/schemas/Mint'
+ *                      $ref: '#/components/schemas/MintPatient'
  *            required: true
  *      responses:
  *          200:
@@ -96,7 +100,7 @@ const {
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/Mint'
+ *                              $ref: '#/components/schemas/MintPatient'
  */
 router.post("/mint", mint);
 
@@ -120,7 +124,7 @@ router.post("/mint", mint);
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/GetID'
+ *                              $ref: '#/components/schemas/GetPatientID'
  */
 router.get("/getID", getPatientFromPhone);
 /**
@@ -133,7 +137,7 @@ router.get("/getID", getPatientFromPhone);
  *            - in: query
  *              name: patientId
  *              schema:
- *                type: int
+ *                type: number
  *              required: true
  *              description: Patient ID to get data
  *      responses:
@@ -143,7 +147,7 @@ router.get("/getID", getPatientFromPhone);
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/Get'
+ *                              $ref: '#/components/schemas/GetPatient'
  */
 router.get("/get", getPatient);
 

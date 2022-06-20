@@ -7,7 +7,7 @@ const { mint, getTestResult } = require("../controller/testResult");
  * @swagger
  * components:
  *  schemas:
- *      Mint:
+ *      MintTestResult:
  *          type: object
  *          required:
  *              - privateKey
@@ -25,20 +25,20 @@ const { mint, getTestResult } = require("../controller/testResult");
  *                  type: string
  *                  description: result of test
  *              visitId:
- *                  type: int
+ *                  type: number
  *                  description: ID of visit
  *          example:
  *              privateKey: ""
  *              name: ""
  *              result: ""
  *              visitId: 1
- *      Get:
+ *      GetTestResult:
  *          type: object
  *          required:
  *              - testId
  *          properties:
  *              testId:
- *                  type: int
+ *                  type: number
  *                  description: ID of Test
  *          example:
  *              testId: 1
@@ -62,7 +62,7 @@ const { mint, getTestResult } = require("../controller/testResult");
  *            content:
  *              application/json:
  *                  schema:
- *                      $ref: '#/components/schemas/Mint'
+ *                      $ref: '#/components/schemas/MintTestResult'
  *            required: true
  *      responses:
  *          200:
@@ -71,7 +71,7 @@ const { mint, getTestResult } = require("../controller/testResult");
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/Mint'
+ *                              $ref: '#/components/schemas/MintTestResult'
  */
 router.post("/mint", mint);
 
@@ -83,9 +83,9 @@ router.post("/mint", mint);
  *      tags: [TestResult]
  *      parameters:
  *            - in: query
- *              name: testResultId
+ *              name: testId
  *              schema:
- *                type: int
+ *                type: number
  *              required: true
  *              description: TestResult ID to get data
  *      responses:
@@ -95,7 +95,7 @@ router.post("/mint", mint);
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/Get'
+ *                              $ref: '#/components/schemas/GetTestResult'
  */
 router.get("/get", getTestResult);
 

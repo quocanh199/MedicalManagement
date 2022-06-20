@@ -61,7 +61,7 @@ contract Medicine is ERC721Base, IMedicine {
         _medicineData[tokenId] = MedicineStruct(name, amount);
         _medicineHistory[tokenId].push(tokenId);
         _isMedicineHistory[tokenId] = false;
-
+ 
         return tokenId;
     }
 
@@ -117,7 +117,10 @@ contract Medicine is ERC721Base, IMedicine {
         view
         returns (MedicineStruct memory)
     {
-        return _medicineData[medicineId];
+        uint256 latestMedicineId = _medicineHistory[medicineId][
+            _medicineHistory[medicineId].length - 1
+        ];
+        return _medicineData[latestMedicineId];
     }
 
     function getAddress() public restrictRole(AuthType.Admin) {

@@ -18,7 +18,12 @@ const mint = async (req, res) => {
   try {
     const { privateKey, patientId } = req.body;
     const data = contract.methods.mint(patientId).encodeABI();
-    const tokenId = signTransaction(web3, data, Visit.address, privateKey);
+    const tokenId = await signTransaction(
+      web3,
+      data,
+      Visit.address,
+      privateKey
+    );
     res.json(onSuccess(tokenId));
   } catch (error) {
     console.error(error);
@@ -28,8 +33,8 @@ const mint = async (req, res) => {
 
 const getVisit = async (req, res) => {
   try {
-    const { visitId } = req.query.visitId;
-    const visitData = contract.methods.getVisit(visitId).call();
+    const visitId = req.query.visitId;
+    const visitData = await contract.methods.getVisit(visitId).call();
     res.json(onSuccess(visitData));
   } catch (error) {
     console.error(error);

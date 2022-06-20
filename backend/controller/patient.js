@@ -23,12 +23,18 @@ const mint = async (req, res) => {
       dateOfBirth,
       patientAddress,
       phoneNumber,
+      siteId,
     } = req.body;
 
     const data = contract.methods
-      .mint(name, gender, dateOfBirth, patientAddress, phoneNumber)
+      .mint(name, gender, dateOfBirth, patientAddress, phoneNumber, siteId)
       .encodeABI();
-    const tokenId = signTransaction(web3, data, Patient.address, privateKey);
+    const tokenId = await signTransaction(
+      web3,
+      data,
+      Patient.address,
+      privateKey
+    );
     res.json(onSuccess(tokenId));
   } catch (error) {
     console.error(error);
@@ -38,8 +44,10 @@ const mint = async (req, res) => {
 
 const getPatientFromPhone = async (req, res) => {
   try {
-    const { phoneNumber } = req.query.phoneNumber;
-    const patientId = contract.methods.getPatientFromPhone(phoneNumber).call();
+    const phoneNumber = req.query.phoneNumber;
+    const patientId = await contract.methods
+      .getPatientFromPhone(phoneNumber)
+      .call();
     res.json(onSuccess(patientId));
   } catch (error) {
     console.error(error);
@@ -49,8 +57,8 @@ const getPatientFromPhone = async (req, res) => {
 
 const getPatient = async (req, res) => {
   try {
-    const { patientId } = req.query.patientId;
-    const patientData = contract.methods.getPatient(patientId).call();
+    const patientId = req.query.patientId;
+    const patientData = await contract.methods.getPatient(patientId).call();
     res.json(onSuccess(patientData));
   } catch (error) {
     console.error(error);

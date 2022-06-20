@@ -12,7 +12,7 @@ const {
  * @swagger
  * components:
  *  schemas:
- *      Mint:
+ *      MintMedicine:
  *          type: object
  *          required:
  *              - privateKey
@@ -26,13 +26,13 @@ const {
  *                  type: string
  *                  description: Name of medicine
  *              amount:
- *                  type: int
+ *                  type: number
  *                  description: Amount of medicine
  *          example:
- *              privateKey: "e7bcee5b145ce903a8af38a39cf4657bbcbaf022f7856bfdef2644f73ce0e4c8"
- *              name: "berberin"
- *              amount: 3
- *      Update:
+ *              privateKey: ""
+ *              name: ""
+ *              amount: 1
+ *      UpdateMedicine:
  *          type: object
  *          required:
  *              - privateKey
@@ -44,26 +44,26 @@ const {
  *                  type: string
  *                  description: private key of authorized account
  *              medicineId:
- *                  type: int
+ *                  type: number
  *                  description: ID of old medicine
  *              name:
  *                  type: string
  *                  description: Name of medicine
  *              amount:
- *                  type: int
+ *                  type: number
  *                  description: Amount of medicine
  *          example:
- *              privateKey: "e7bcee5b145ce903a8af38a39cf4657bbcbaf022f7856bfdef2644f73ce0e4c8"
+ *              privateKey: ""
  *              medicineId: 1
- *              name: "berberin"
- *              amount: 3
- *      Get:
+ *              name: ""
+ *              amount: 1
+ *      GetMedicine:
  *          type: object
  *          required:
  *              - medicineId
  *          properties:
  *              medicineId:
- *                  type: int
+ *                  type: number
  *                  description: ID of medicine
  *          example:
  *              medicineId: 1
@@ -87,7 +87,7 @@ const {
  *            content:
  *              application/json:
  *                  schema:
- *                      $ref: '#/components/schemas/Mint'
+ *                      $ref: '#/components/schemas/MintMedicine'
  *            required: true
  *      responses:
  *          200:
@@ -96,7 +96,7 @@ const {
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/Mint'
+ *                              $ref: '#/components/schemas/MintMedicine'
  */
 router.post("/mint", mint);
 
@@ -110,7 +110,7 @@ router.post("/mint", mint);
  *            content:
  *              application/json:
  *                  schema:
- *                      $ref: '#/components/schemas/Update'
+ *                      $ref: '#/components/schemas/UpdateMedicine'
  *            required: true
  *      responses:
  *          200:
@@ -119,7 +119,7 @@ router.post("/mint", mint);
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/Update'
+ *                              $ref: '#/components/schemas/UpdateMedicine'
  */
 router.post("/update", updateMedicine);
 
@@ -133,7 +133,7 @@ router.post("/update", updateMedicine);
  *            - in: query
  *              name: medicineId
  *              schema:
- *                type: int
+ *                type: number
  *              required: true
  *              description: Medicine ID to get history
  *      responses:
@@ -143,7 +143,7 @@ router.post("/update", updateMedicine);
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/Get'
+ *                              $ref: '#/components/schemas/GetMedicine'
  */
 router.get("/getHistory", getMedicineHistory);
 
@@ -157,7 +157,7 @@ router.get("/getHistory", getMedicineHistory);
  *            - in: query
  *              name: medicineId
  *              schema:
- *                type: int
+ *                type: number
  *              required: true
  *              description: Medicine ID to get data
  *      responses:
@@ -167,7 +167,7 @@ router.get("/getHistory", getMedicineHistory);
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/Get'
+ *                              $ref: '#/components/schemas/GetMedicine'
  */
 router.get("/get", getMedicine);
 

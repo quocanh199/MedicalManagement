@@ -18,7 +18,8 @@ const mint = async (req, res) => {
   try {
     const { privateKey, name, siteAddress } = req.body;
     const data = contract.methods.mint(name, siteAddress).encodeABI();
-    const tokenId = signTransaction(web3, data, Site.address, privateKey);
+
+    const tokenId = await signTransaction(web3, data, Site.address, privateKey);
     res.json(onSuccess(tokenId));
   } catch (error) {
     console.error(error);
@@ -28,8 +29,8 @@ const mint = async (req, res) => {
 
 const getSite = async (req, res) => {
   try {
-    const { siteId } = req.query.siteId;
-    const siteData = contract.methods.getSite(siteId);
+    const siteId = req.query.siteId;
+    const siteData = await contract.methods.getSite(siteId).call();
     res.json(onSuccess(siteData));
   } catch (error) {
     console.error(error);

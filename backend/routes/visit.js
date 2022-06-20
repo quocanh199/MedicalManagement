@@ -7,7 +7,7 @@ const { mint, getVisit } = require("../controller/visit");
  * @swagger
  * components:
  *  schemas:
- *      Mint:
+ *      MintVisit:
  *          type: object
  *          required:
  *              - privateKey
@@ -17,18 +17,18 @@ const { mint, getVisit } = require("../controller/visit");
  *                  type: string
  *                  description: private key of authorized account
  *              patientId:
- *                  type: int
+ *                  type: number
  *                  description: ID of patient
  *          example:
  *              privateKey: ""
  *              patientId: 1
- *      Get:
+ *      GetVisit:
  *          type: object
  *          required:
  *              - visitId
  *          properties:
  *              visitId:
- *                  type: int
+ *                  type: number
  *                  description: ID of Visit
  *          example:
  *              visitId: 1
@@ -52,7 +52,7 @@ const { mint, getVisit } = require("../controller/visit");
  *            content:
  *              application/json:
  *                  schema:
- *                      $ref: '#/components/schemas/Mint'
+ *                      $ref: '#/components/schemas/MintVisit'
  *            required: true
  *      responses:
  *          200:
@@ -61,7 +61,7 @@ const { mint, getVisit } = require("../controller/visit");
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/Mint'
+ *                              $ref: '#/components/schemas/MintVisit'
  */
 router.post("/mint", mint);
 
@@ -75,7 +75,7 @@ router.post("/mint", mint);
  *            - in: query
  *              name: visitId
  *              schema:
- *                type: int
+ *                type: number
  *              required: true
  *              description: Visit ID to get data
  *      responses:
@@ -85,7 +85,7 @@ router.post("/mint", mint);
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/Get'
+ *                              $ref: '#/components/schemas/GetVisit'
  */
 router.get("/get", getVisit);
 

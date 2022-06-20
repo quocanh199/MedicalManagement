@@ -11,7 +11,7 @@ const {
  * @swagger
  * components:
  *  schemas:
- *      Mint:
+ *      MintPrescription:
  *          type: object
  *          required:
  *              - privateKey
@@ -24,16 +24,16 @@ const {
  *              listId:
  *                  type: array
  *                  items:
- *                      type: int
+ *                      type: number
  *                  description: list of medicine
  *              visitId:
- *                  type: int
+ *                  type: number
  *                  description: ID of visit
  *          example:
  *              privateKey: ""
  *              listId: []
  *              amount: 1
- *      Set:
+ *      SetPrescription:
  *          type: object
  *          required:
  *              - privateKey
@@ -43,18 +43,18 @@ const {
  *                  type: string
  *                  description: private key of authorized account
  *              prescriptionId:
- *                  type: int
+ *                  type: number
  *                  description: ID of prescription
  *          example:
  *              privateKey: ""
  *              prescriptionId: 1
- *      Get:
+ *      GetPrescription:
  *          type: object
  *          required:
  *              - prescriptionId
  *          properties:
  *              prescriptionId:
- *                  type: int
+ *                  type: number
  *                  description: ID of prescription
  *          example:
  *              prescription: 1
@@ -78,7 +78,7 @@ const {
  *            content:
  *              application/json:
  *                  schema:
- *                      $ref: '#/components/schemas/Mint'
+ *                      $ref: '#/components/schemas/MintPrescription'
  *            required: true
  *      responses:
  *          200:
@@ -87,7 +87,7 @@ const {
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/Mint'
+ *                              $ref: '#/components/schemas/MintPrescription'
  */
 router.post("/mint", mint);
 
@@ -101,7 +101,7 @@ router.post("/mint", mint);
  *            content:
  *              application/json:
  *                  schema:
- *                      $ref: '#/components/schemas/Set'
+ *                      $ref: '#/components/schemas/SetPrescription'
  *            required: true
  *      responses:
  *          200:
@@ -110,7 +110,7 @@ router.post("/mint", mint);
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/Set'
+ *                              $ref: '#/components/schemas/SetPrescription'
  */
 router.post("/setPaid", setPaidPrescription);
 
@@ -124,7 +124,7 @@ router.post("/setPaid", setPaidPrescription);
  *            - in: query
  *              name: prescriptionId
  *              schema:
- *                type: int
+ *                type: number
  *              required: true
  *              description: Prescription ID to get data
  *      responses:
@@ -134,8 +134,8 @@ router.post("/setPaid", setPaidPrescription);
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/Get'
+ *                              $ref: '#/components/schemas/GetPrescription'
  */
-router.get("/get", getMedicineHistory);
+router.get("/get", getPrescription);
 
 module.exports = router;

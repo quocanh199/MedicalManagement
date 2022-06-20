@@ -31,9 +31,9 @@ const mint = async (req, res) => {
   }
 };
 
-const getTestResult = async (res, req) => {
+const getTestResult = async (req, res) => {
   try {
-    const { testId } = req.query.testId;
+    const testId = req.query.testId;
     const testData = await contract.methods.getTestResult(testId).call();
     res.json(onSuccess(testData));
   } catch (error) {

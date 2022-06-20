@@ -7,7 +7,7 @@ const { mint, getSite } = require("../controller/site");
  * @swagger
  * components:
  *  schemas:
- *      Mint:
+ *      MintSite:
  *          type: object
  *          required:
  *              - privateKey
@@ -27,13 +27,13 @@ const { mint, getSite } = require("../controller/site");
  *              privateKey: ""
  *              name: ""
  *              siteAddress: ""
- *      Get:
+ *      GetSite:
  *          type: object
  *          required:
  *              - siteId
  *          properties:
  *              siteId:
- *                  type: int
+ *                  type: number
  *                  description: ID of Site
  *          example:
  *              siteId: 1
@@ -57,7 +57,7 @@ const { mint, getSite } = require("../controller/site");
  *            content:
  *              application/json:
  *                  schema:
- *                      $ref: '#/components/schemas/Mint'
+ *                      $ref: '#/components/schemas/MintSite'
  *            required: true
  *      responses:
  *          200:
@@ -66,7 +66,7 @@ const { mint, getSite } = require("../controller/site");
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/Mint'
+ *                              $ref: '#/components/schemas/MintSite'
  */
 router.post("/mint", mint);
 
@@ -80,7 +80,7 @@ router.post("/mint", mint);
  *            - in: query
  *              name: siteId
  *              schema:
- *                type: int
+ *                type: number
  *              required: true
  *              description: Site ID to get data
  *      responses:
@@ -90,7 +90,7 @@ router.post("/mint", mint);
  *                  application/json:
  *                      schema:
  *                          items:
- *                              $ref: '#/components/schemas/Get'
+ *                              $ref: '#/components/schemas/GetSite'
  */
 router.get("/get", getSite);
 
