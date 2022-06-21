@@ -117,6 +117,21 @@
                     <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
+                <tr>
+                  <td>Get all Site</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <!-- <span class="input-group-text" id="inputGroup-sizing-sm">Site ID</span> -->
+                      </div>
+                      <!-- <input id="siteId" type="number" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm"> -->
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                  </td>
+                </tr>
               </tbody>
             </table>
             <table class="table">
@@ -503,40 +518,133 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Kiểm tra tên của tài khoản</td>
+                  <td>Create Medicine</td>
                   <td>
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Địa chỉ</span>
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
                       </div>
-                      <input id="addressName" type="text" class="form-control" aria-label="Small" 
-                            aria-describedby="inputGroup-sizing-sm" placeholder="0xCeA2a20F681169BEe6Cfb04F446b61c5B45cf8E4">
+                      <input id="medicinePrivateKeyCreate" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm">
                     </div>
                   </td>
                   <td>
-                    <button onclick="checkNameAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Gửi</button>
+                    <button onclick="checkNameAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
                 <tr>
-                  <td>Kiểm tra tài khoản của tên</td>
-                  <td>
-                    <div class="input-group input-group-sm">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Tên TK</span>
-                      </div>
-                      <input id="nameAddress" type="text" class="form-control" aria-label="Small" 
-                            aria-describedby="inputGroup-sizing-sm" placeholder="Ha Noi">
-                    </div>
-                  </td>
-                  <td>
-                    <button onclick="checkAddressName()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Gửi</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Danh sách tài khoản</td>
                   <td></td>
                   <td>
-                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Gửi</button>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Medicine name</span>
+                      </div>
+                      <input id="medicineNameCreate" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Amount</span>
+                      </div>
+                      <input id="medicineAmountCreate" type="number" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Update Medicine</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
+                      </div>
+                      <input id="medicinePrivateKeyUpdate" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="checkAddressName()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Medicine ID</span>
+                      </div>
+                      <input id="medicineIdUpdate" type="number" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Medicine Name</span>
+                      </div>
+                      <input id="medicineNameUpdate" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Amount</span>
+                      </div>
+                      <input id="medicineAmountUpdate" type="number" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Get Medicine History</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Medicine ID</span>
+                      </div>
+                      <input id="medicineIDGetHistory" type="number" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Get Medicine Data</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Medicine ID</span>
+                      </div>
+                      <input id="medicineIDGet" type="number" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
               </tbody>

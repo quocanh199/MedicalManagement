@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { mint, getSite } = require("../controller/site");
+const { mint, getSite, getAllSite } = require("../controller/site");
 
 /**
  * @swagger
@@ -37,6 +37,11 @@ const { mint, getSite } = require("../controller/site");
  *                  description: ID of Site
  *          example:
  *              siteId: 1
+ *      GetAllSite:
+ *          type: object
+ *          required:
+ *          properties:
+ *          example:
  *
  */
 
@@ -93,5 +98,23 @@ router.post("/mint", mint);
  *                              $ref: '#/components/schemas/GetSite'
  */
 router.get("/get", getSite);
+
+/**
+ * @swagger
+ * /api/site/getAll:
+ *  get:
+ *      summary: List all Site
+ *      tags: [Site]
+ *      parameters:
+ *      responses:
+ *          200:
+ *              description: success
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          items:
+ *                              $ref: '#/components/schemas/GetAllSite'
+ */
+router.get("/getAll", getAllSite);
 
 module.exports = router;

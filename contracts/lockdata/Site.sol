@@ -16,6 +16,8 @@ contract Site is ERC721Base, ISite {
     // mapping token
     mapping(uint256 => uint256[]) private _patientOfSite;
 
+    uint256[] listSite;
+
     constructor(address _authAddress) ERC721Base("Site", "ST", _authAddress) {
         authAddress = _authAddress;
     }
@@ -27,6 +29,8 @@ contract Site is ERC721Base, ISite {
     {
         uint256 tokenId = super.mint();
         _siteData[tokenId] = SiteStruct(name, siteAddress);
+
+        listSite.push(tokenId);
 
         return tokenId;
     }
@@ -45,5 +49,9 @@ contract Site is ERC721Base, ISite {
         returns (SiteStruct memory, uint256[] memory)
     {
         return (_siteData[siteId], _patientOfSite[siteId]);
+    }
+
+    function getAllSite() public view returns (uint256[] memory) {
+        return listSite;
     }
 }

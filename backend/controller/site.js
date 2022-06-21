@@ -38,4 +38,14 @@ const getSite = async (req, res) => {
   }
 };
 
-module.exports = { mint, getSite };
+const getAllSite = async (req, res) => {
+  try {
+    const listSiteData = await contract.methods.getAllSite().call();
+    res.json(onSuccess(listSiteData));
+  } catch (error) {
+    console.error(error);
+    res.json(onError(error));
+  }
+};
+
+module.exports = { mint, getSite, getAllSite };
