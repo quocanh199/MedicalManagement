@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"       
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <link rel="icon" href="./images/icon.png">
+    <title>Cổng Thông tin điện tử Chính Phủ</title>
+  </head>
+  <body>
+    <style>
+      .my-center {
+        text-align: center;
+        margin-top: 60px;
+        margin-bottom: 10px;
+      }
+      .my-td {
+        text-align: center;
+        width: 390px;
+      }
+      .my-btn {
+        float: right;
+      }
+      .my-submit-btn {
+        width: 100px;
+        float: right;
+      }
+      .my-popup-btn {
+        width: 65px;
+      }
+      .my-span {
+        margin-bottom: 5px;
+      }
+      .bg-header {
+        text-align: center;
+        margin-bottom: 10px;
+        height: 225px;
+        padding-top: 50px;
+        background-image: url("./clean-medical-background_53876-97927.webp");
+        background-repeat: no-repeat;
+      }
+    </style>
+    <div class="bg-header" tabindex="0"></div>
+    <div class="container">
+      <table class="table table-borderless">
+        <tr>
+          <td>
+            <table class="table">
+              <thead class="text-black">
+                <tr>
+                  <th colspan="3" class="my-center"><h3 class="font-weight-bold">SITE</h3></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Create Site</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
+                      </div>
+                      <input id="sitePrivateKey" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="checkNameAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Site's name</span>
+                      </div>
+                      <input id="siteName" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                    <!-- empty td -->
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Site's address</span>
+                      </div>
+                      <input id="siteAddress" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                  </td>
+                  <td>
+                    <!-- empty td -->
+                  </td>
+                </tr>
+                <tr>
+                  <td>Get data of Site</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Site ID</span>
+                      </div>
+                      <input id="siteId" type="number" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table">
+              <thead class="text-black">
+                <tr>
+                  <th colspan="3" class="my-center"><h3 class="font-weight-bold">PATIENT</h3></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Create Patient</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
+                      </div>
+                      <input id="patientPrivateKey" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="checkNameAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
+                      </div>
+                      <input id="patientName" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Gender</span>
+                      </div>
+                      <select class="custom-select" id="patientGender">
+                        <option value="0">Chọn...</option>
+                        <option id="gender-1" value="Male">Male</option>
+                        <option id="gender-2" value="Female">Female</option>
+                        <option id="gender-3" value="Other">Other</option>
+                      </select>
+                      
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">DoB</span>
+                      </div>
+                      <input id="patientDateOfBirth" type="date" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Address</span>
+                      </div>
+                      <input id="patientAddress" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Phone Number</span>
+                      </div>
+                      <input id="patientPhone" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Site ID</span>
+                      </div>
+                      <input id="patientSiteId" type="number" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Get ID of Patient</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Phone Number</span>
+                      </div>
+                      <input id="getIdPhone" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="checkAddressName()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Get data of Patient</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Patient ID</span>
+                      </div>
+                      <input id="patientId" type="number" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table">
+              <thead class="text-black">
+                <tr>
+                  <th colspan="3" class="my-center"><h3 class="font-weight-bold">VISIT</h3></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Create Visit</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
+                      </div>
+                      <input id="visitPrivateKey" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="checkNameAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Patient ID</span>
+                      </div>
+                      <input id="visitPatientId" type="number" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Get data of Visit</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Visit ID</span>
+                      </div>
+                      <input id="visitId" type="number" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="checkAddressName()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Gửi</button>
+                  </td>
+                </tr>
+              
+              </tbody>
+            </table>
+            <table class="table">
+              <thead class="text-black">
+                <tr>
+                  <th colspan="3" class="my-center"><h3 class="font-weight-bold">TEST RESULT</h3></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Create Test</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
+                      </div>
+                      <input id="testResultPrivateKey" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="checkNameAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Test Name</span>
+                      </div>
+                      <input id="testResultName" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Test Result</span>
+                      </div>
+                      <input id="testResult" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Visit ID</span>
+                      </div>
+                      <input id="testResultVisitId" type="number" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Get data of Test </td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Test ID</span>
+                      </div>
+                      <input id="testResultId" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="checkAddressName()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table">
+              <thead class="text-black">
+                <tr>
+                  <th colspan="3" class="my-center"><h3 class="font-weight-bold">PRESCRIPTION</h3></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Create Prescription</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
+                      </div>
+                      <input id="prescriptionPrivateKey" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="checkNameAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">List Medicine ID</span>
+                      </div>
+                      <input id="prescriptionListId" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Visit ID</span>
+                      </div>
+                      <input id="prescriptionVisitId" type="number" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Set Paid Prescription</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
+                      </div>
+                      <input id="prescriptionPrivateKeySetPaid" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Prescription ID</span>
+                      </div>
+                      <input id="prescriptionPrivateKeySetPaid" type="number" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Get Prescription Data</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Prescription ID</span>
+                      </div>
+                      <input id="prescriptionPrivateKeySetPaid" type="number" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" >
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table">
+              <thead class="text-black">
+                <tr>
+                  <th colspan="3" class="my-center"><h3 class="font-weight-bold">MEDICINE</h3></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Kiểm tra tên của tài khoản</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Địa chỉ</span>
+                      </div>
+                      <input id="addressName" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" placeholder="0xCeA2a20F681169BEe6Cfb04F446b61c5B45cf8E4">
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="checkNameAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Gửi</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Kiểm tra tài khoản của tên</td>
+                  <td>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Tên TK</span>
+                      </div>
+                      <input id="nameAddress" type="text" class="form-control" aria-label="Small" 
+                            aria-describedby="inputGroup-sizing-sm" placeholder="Ha Noi">
+                    </div>
+                  </td>
+                  <td>
+                    <button onclick="checkAddressName()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Gửi</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Danh sách tài khoản</td>
+                  <td></td>
+                  <td>
+                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Gửi</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table id="result-p" class="table table-hover">
+              <thead class="text-black">
+                <tr>
+                  <tr>
+                    <th class="my-center">
+                      <h3 class="font-weight-bold">KẾT QUẢ
+                        <button onclick="clearText()" type="submit" class="btn my-btn"><ion-icon name="backspace"></ion-icon></button>
+                      </h3>
+                    </th>
+                  </tr>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td id="result-p-0" class="my-td"></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+  </body>
+
+  <script>
+    const getUserRole = async (userAddress) => {
+      // const url = `http://localhost:8088/api/authenticator/CheckAuth/?userAddress=${userAddress}`
+      // const response = await fetch(url);
+
+      // const myJson = await response.json();
+      const myJson = await $.get(`http://localhost:8088/api/authenticator/CheckAuth/?userAddress=${userAddress}`)
+      return myJson;
+    }
+
+    const userAddress = window.location.search.split('?address=')[1];
+    getUserRole(userAddress).then((data) => {
+      alert(JSON.stringify(data))
+    });
+  
+
+    let rows = 1;
+    const clearText = () => {
+      $("#addressName").val("");
+      $("#nameAddress").val("");
+      $("#result-p-0").text("");
+      $("#imageScan").val("");
+      $("#imageVote").val("");
+      $("#optionVote").val(0);
+      $("#imageCheck").val("");
+      for (let i=1; i<rows; i++) {
+        $(`#result-p-r-${i}`).remove();
+      }
+      rows = 1;
+    };
+    const initResult = (keys, values) => {
+      $("#result-p-0").text(`${keys[0]}: ${values[0]}`);
+      rows = keys.length;
+      for (let i=1; i<rows; i++) {
+        if (keys[i] == "Vote for") values[i] = idToName(values[i]);
+        $('#result-p tr:last').after(`
+          <tr id="result-p-r-${i}"><td class="my-td">${keys[i]}: ${values[i]}</td></tr>
+        `);
+      }
+    };
+    const initResultForCountVote = (keys, values) => {
+      $("#result-p-0").text(`${idToName(parseInt(keys[0]))}: ${values[0]}`);
+      rows = keys.length;
+      for (let i=1; i<rows; i++) {
+        keys[i] = idToName(parseInt(keys[i]));
+        $('#result-p tr:last').after(`
+          <tr id="result-p-r-${i}"><td class="my-td">${keys[i]}: ${values[i]}</td></tr>
+        `);
+      }
+    };
+    const initResultForListVote = (keys, values) => {
+      $("#result-p-0").text(`${keys[0]} ${idToName(parseInt(values[0]["Vote for"]))} - ${values[0]["Vote at"]}`);
+      rows = keys.length;
+      for (let i=1; i<rows; i++) {
+        let voteFor = idToName(parseInt(values[i]["Vote for"]));
+        let voteAt = values[i]["Vote at"];
+        $('#result-p tr:last').after(`
+          <tr id="result-p-r-${i}"><td class="my-td">${keys[i]} ${voteFor} - ${voteAt}</td></tr>
+        `);
+      }
+    };
+    const idToName = (id) => {
+      return $(`#val-${id}`).text();
+    };
+    const checkNameAddress = async () => {
+      const query = $("#addressName").val();
+      clearText();
+      $("#addressName").val(query);
+      const url = "http:/localhost:8088/api/gov/name?address=" + query;
+      const response = await fetch(url);
+      const myJson = await response.json();
+      if (myJson.code == 200) $("#result-p-0").text(myJson.data);
+      else alert("Địa chỉ không hợp lệ");
+    };
+    const checkAddressName = async () => {
+      const query = $("#nameAddress").val();
+      clearText();
+      $("#nameAddress").val(query);
+      const url = "http:/localhost:8088/api/gov/address?name=" + query;
+      const response = await fetch(url);
+      const myJson = await response.json();
+      if (myJson.code == 200) $("#result-p-0").text(myJson.data);
+      else alert("Tên không tồn tại");
+    };
+    const listAddress = async () => {
+      clearText();
+      const url = "http:/localhost:8088/api/gov/list";
+      const response = await fetch(url);
+      const myJson = await response.json();
+      const keys = Object.keys(myJson.data);
+      const values = Object.values(myJson.data);
+      initResult(keys, values);
+    };
+    const scanQrCode = async () => {
+      const query = $("#imageScan").val();
+      clearText();
+      $("#imageScan").val(query);
+      const url = "http:/localhost:8088/api/vote/scan?image_url=" + query;
+      const response = await fetch(url);
+      const myJson = await response.json();
+      if (myJson.code == 200) {
+        const keys = Object.keys(myJson.data);
+        const values = Object.values(myJson.data);
+        initResult(keys, values);
+      }
+      else alert("Hình ảnh không hợp lệ");
+    };
+    const vote = async () => {
+      const query1 = $("#imageVote").val();
+      let query2 = $("#optionVote").val();
+      clearText();
+      $("#imageVote").val(query1);
+      $("#optionVote").val(query2);
+      $.post("http:/localhost:8088/api/vote/voting",
+      {
+        image_url: query1,
+        option: parseInt(query2),
+      }, function (res, status) {
+        if (res.code == 200) {
+          const keys = Object.keys(res.data);
+          const values = Object.values(res.data);
+          alert("Bạn đã bầu cử thành công")
+          initResult(keys, values);
+        }
+        else alert("Có gì đó sai sai");
+      });
+    };
+    const checkVote = async () => {
+      const query = $("#imageCheck").val();
+      clearText();
+      $("#imageCheck").val(query);
+      const url = "http://localhost:8088/api/vote/check-my-vote?image_url=" + query;
+      const response = await fetch(url);
+      const myJson = await response.json();
+      if (myJson.code == 200) {
+        const keys = Object.keys(myJson.data);
+        const values = Object.values(myJson.data);
+        initResult(keys, values);
+      }
+      else alert("Hình ảnh không hợp lệ");
+    };
+    const countVote = async () => {
+      clearText();
+      const url = "http:/localhost:8088/api/vote/count-voted";
+      const response = await fetch(url);
+      const myJson = await response.json();
+      const keys = Object.keys(myJson.data);
+      const values = Object.values(myJson.data);
+      initResultForCountVote(keys, values);
+    };
+    const listVote = async () => {
+      clearText();
+      const url = "http:/localhost:8088/api/vote/list-voted";
+      const response = await fetch(url);
+      const myJson = await response.json();
+      const keys = Object.keys(myJson.data);
+      const values = Object.values(myJson.data);
+      initResultForListVote(keys, values);
+    };
+    const totalVote = async () => {
+      clearText();
+      const url = "http:/localhost:8088/api/vote/total-voted";
+      const response = await fetch(url);
+      const myJson = await response.json();
+      $("#result-p-0").text(myJson.data);
+    };
+
+    
+  </script>
+</html>

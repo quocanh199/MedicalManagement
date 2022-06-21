@@ -9,6 +9,7 @@ const testResultRouter = require("./routes/testResult");
 const visitRouter = require("./routes/visit");
 const patientRouter = require("./routes/patient");
 const siteRouter = require("./routes/site");
+const authRouter = require("./routes/authenticator");
 
 const cors = require("cors");
 const PORT = 8088;
@@ -60,6 +61,7 @@ mainRouter.use("/testResult", testResultRouter);
 mainRouter.use("/visit", visitRouter);
 mainRouter.use("/patient", patientRouter);
 mainRouter.use("/site", siteRouter);
+mainRouter.use("/authenticator", authRouter);
 
 app.use("/api/", loggerAuth, mainRouter);
 app.use("/docs/", swaggerUI.serve, swaggerUI.setup(specs));

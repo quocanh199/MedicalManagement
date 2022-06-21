@@ -32,7 +32,7 @@ const {
  *          example:
  *              privateKey: ""
  *              listId: []
- *              amount: 1
+ *              visitId: 1
  *      SetPrescription:
  *          type: object
  *          required:
