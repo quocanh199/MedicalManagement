@@ -2885,7 +2885,7 @@
   },
   "Site": {
     "input": [],
-    "address": "0xe230e228F57E7BBe6a5b141C18D825553Ee187d7",
+    "address": "0x98793259a812Be7a21b3934FFeC3FAc219CBbe88",
     "abi": [
       {
         "inputs": [
@@ -3024,6 +3024,19 @@
             "internalType": "uint256",
             "name": "",
             "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getAllSite",
+        "outputs": [
+          {
+            "internalType": "uint256[]",
+            "name": "",
+            "type": "uint256[]"
           }
         ],
         "stateMutability": "view",

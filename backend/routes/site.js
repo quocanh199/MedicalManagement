@@ -42,6 +42,7 @@ const { mint, getSite, getAllSite } = require("../controller/site");
  *          required:
  *          properties:
  *          example:
+ *              null
  *
  */
 
@@ -105,7 +106,6 @@ router.get("/get", getSite);
  *  get:
  *      summary: List all Site
  *      tags: [Site]
- *      parameters:
  *      responses:
  *          200:
  *              description: success

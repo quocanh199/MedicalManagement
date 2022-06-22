@@ -4,7 +4,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"       
+
     integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
@@ -46,7 +48,7 @@
       }
     </style>
     <div class="bg-header" tabindex="0"></div>
-    <div class="container">
+    <div class="container ">
       <table class="table table-borderless">
         <tr>
           <td>
@@ -69,7 +71,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="checkNameAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="createSite()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
                 <tr>
@@ -114,7 +116,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="getDataOfSite()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
                 <tr>
@@ -129,7 +131,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="getAllSite()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
               </tbody>
@@ -153,7 +155,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="checkNameAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="createPatient()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
                 <tr>
@@ -296,7 +298,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="checkNameAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="createVisit()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
                 <tr>
@@ -651,7 +653,7 @@
             </table>
           </td>
           <td>
-            <table id="result-p" class="table table-hover">
+            <table id="result-p" class="table ">
               <thead class="text-black">
                 <tr>
                   <tr>
@@ -677,172 +679,85 @@
   </body>
 
   <script>
-    const getUserRole = async (userAddress) => {
-      // const url = `http://localhost:8088/api/authenticator/CheckAuth/?userAddress=${userAddress}`
-      // const response = await fetch(url);
 
-      // const myJson = await response.json();
+    // SITE
+    const createSite = async () => {
+      const privateKey = $('#sitePrivateKey').val()
+      const name = $('#siteName').val()
+      const siteAddress = $('#siteAddress').val()
+      const data = await mintSite(privateKey, name, siteAddress)
+      const keys = ['Site ID']
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    const getDataOfSite = async () => {
+      const siteId = $('#siteId').val()
+      const data = await getSite(siteId)
+      const keys = ["Name", "Patients of Site"]
+
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    const getAllSite = async () =>{
+      const data = await getListAllSite();
+      
+      const keys = ['List Sites']
+      const values = [Object.values(data.data)]
+      initResult(keys, values)
+    }
+
+    // PATIENT
+    const createPatient = async ()=> {
+      const privateKey = $('#patientPrivateKey').val()
+      const name = $('#patientName').val()
+      const gender = $('#patientGender').val()
+      const dateOfBirth = $('#patientDateOfBirth').val()
+      const patientAddress = $('#patientAddress').val()
+      const phoneNumber = $('#patientPhone').val()
+      const siteId = $('#patientSiteId').val()
+
+      const data = await mintPatient(privateKey, name, gender, dateOfBirth, patientAddress, phoneNumber, siteId);
+      const keys = Object.keys(data.data)
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    const getUserRole = async (userAddress) => {
       const myJson = await $.get(`http://localhost:8088/api/authenticator/CheckAuth/?userAddress=${userAddress}`)
-      return myJson;
+      return(myJson);
     }
 
     const userAddress = window.location.search.split('?address=')[1];
     getUserRole(userAddress).then((data) => {
       alert(JSON.stringify(data))
     });
-  
+    
 
-    let rows = 1;
+    let totalRows = 0;
     const clearText = () => {
-      $("#addressName").val("");
-      $("#nameAddress").val("");
-      $("#result-p-0").text("");
-      $("#imageScan").val("");
-      $("#imageVote").val("");
-      $("#optionVote").val(0);
-      $("#imageCheck").val("");
-      for (let i=1; i<rows; i++) {
-        $(`#result-p-r-${i}`).remove();
+      const rowToDelete = totalRows;
+      $("#result-p-0").text('');
+      for (let i=0; i<rowToDelete; i++) {
+        $(`#result-p-r`).remove();
+        totalRows -= 1;
       }
-      rows = 1;
     };
     const initResult = (keys, values) => {
+      clearText()
       $("#result-p-0").text(`${keys[0]}: ${values[0]}`);
       rows = keys.length;
       for (let i=1; i<rows; i++) {
-        if (keys[i] == "Vote for") values[i] = idToName(values[i]);
         $('#result-p tr:last').after(`
-          <tr id="result-p-r-${i}"><td class="my-td">${keys[i]}: ${values[i]}</td></tr>
+          <tr id="result-p-r"><td class="my-td">${keys[i]}: ${values[i]}</td></tr>
         `);
       }
-    };
-    const initResultForCountVote = (keys, values) => {
-      $("#result-p-0").text(`${idToName(parseInt(keys[0]))}: ${values[0]}`);
-      rows = keys.length;
-      for (let i=1; i<rows; i++) {
-        keys[i] = idToName(parseInt(keys[i]));
-        $('#result-p tr:last').after(`
-          <tr id="result-p-r-${i}"><td class="my-td">${keys[i]}: ${values[i]}</td></tr>
-        `);
-      }
-    };
-    const initResultForListVote = (keys, values) => {
-      $("#result-p-0").text(`${keys[0]} ${idToName(parseInt(values[0]["Vote for"]))} - ${values[0]["Vote at"]}`);
-      rows = keys.length;
-      for (let i=1; i<rows; i++) {
-        let voteFor = idToName(parseInt(values[i]["Vote for"]));
-        let voteAt = values[i]["Vote at"];
-        $('#result-p tr:last').after(`
-          <tr id="result-p-r-${i}"><td class="my-td">${keys[i]} ${voteFor} - ${voteAt}</td></tr>
-        `);
-      }
-    };
-    const idToName = (id) => {
-      return $(`#val-${id}`).text();
-    };
-    const checkNameAddress = async () => {
-      const query = $("#addressName").val();
-      clearText();
-      $("#addressName").val(query);
-      const url = "http:/localhost:8088/api/gov/name?address=" + query;
-      const response = await fetch(url);
-      const myJson = await response.json();
-      if (myJson.code == 200) $("#result-p-0").text(myJson.data);
-      else alert("Địa chỉ không hợp lệ");
-    };
-    const checkAddressName = async () => {
-      const query = $("#nameAddress").val();
-      clearText();
-      $("#nameAddress").val(query);
-      const url = "http:/localhost:8088/api/gov/address?name=" + query;
-      const response = await fetch(url);
-      const myJson = await response.json();
-      if (myJson.code == 200) $("#result-p-0").text(myJson.data);
-      else alert("Tên không tồn tại");
-    };
-    const listAddress = async () => {
-      clearText();
-      const url = "http:/localhost:8088/api/gov/list";
-      const response = await fetch(url);
-      const myJson = await response.json();
-      const keys = Object.keys(myJson.data);
-      const values = Object.values(myJson.data);
-      initResult(keys, values);
-    };
-    const scanQrCode = async () => {
-      const query = $("#imageScan").val();
-      clearText();
-      $("#imageScan").val(query);
-      const url = "http:/localhost:8088/api/vote/scan?image_url=" + query;
-      const response = await fetch(url);
-      const myJson = await response.json();
-      if (myJson.code == 200) {
-        const keys = Object.keys(myJson.data);
-        const values = Object.values(myJson.data);
-        initResult(keys, values);
-      }
-      else alert("Hình ảnh không hợp lệ");
-    };
-    const vote = async () => {
-      const query1 = $("#imageVote").val();
-      let query2 = $("#optionVote").val();
-      clearText();
-      $("#imageVote").val(query1);
-      $("#optionVote").val(query2);
-      $.post("http:/localhost:8088/api/vote/voting",
-      {
-        image_url: query1,
-        option: parseInt(query2),
-      }, function (res, status) {
-        if (res.code == 200) {
-          const keys = Object.keys(res.data);
-          const values = Object.values(res.data);
-          alert("Bạn đã bầu cử thành công")
-          initResult(keys, values);
-        }
-        else alert("Có gì đó sai sai");
-      });
-    };
-    const checkVote = async () => {
-      const query = $("#imageCheck").val();
-      clearText();
-      $("#imageCheck").val(query);
-      const url = "http://localhost:8088/api/vote/check-my-vote?image_url=" + query;
-      const response = await fetch(url);
-      const myJson = await response.json();
-      if (myJson.code == 200) {
-        const keys = Object.keys(myJson.data);
-        const values = Object.values(myJson.data);
-        initResult(keys, values);
-      }
-      else alert("Hình ảnh không hợp lệ");
-    };
-    const countVote = async () => {
-      clearText();
-      const url = "http:/localhost:8088/api/vote/count-voted";
-      const response = await fetch(url);
-      const myJson = await response.json();
-      const keys = Object.keys(myJson.data);
-      const values = Object.values(myJson.data);
-      initResultForCountVote(keys, values);
-    };
-    const listVote = async () => {
-      clearText();
-      const url = "http:/localhost:8088/api/vote/list-voted";
-      const response = await fetch(url);
-      const myJson = await response.json();
-      const keys = Object.keys(myJson.data);
-      const values = Object.values(myJson.data);
-      initResultForListVote(keys, values);
-    };
-    const totalVote = async () => {
-      clearText();
-      const url = "http:/localhost:8088/api/vote/total-voted";
-      const response = await fetch(url);
-      const myJson = await response.json();
-      $("#result-p-0").text(myJson.data);
+      totalRows += (rows-1);
+
     };
 
     
   </script>
+
 </html>
