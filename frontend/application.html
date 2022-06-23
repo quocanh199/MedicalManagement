@@ -259,7 +259,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="checkAddressName()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="getIdOfPatient()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
                 <tr>
@@ -274,7 +274,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="getDataOfPatient()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
               </tbody>
@@ -327,7 +327,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="checkAddressName()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Gửi</button>
+                    <button onclick="getDataOfVisit()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Gửi</button>
                   </td>
                 </tr>
               
@@ -352,7 +352,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="checkNameAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="createTest()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
                 <tr>
@@ -409,7 +409,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="checkAddressName()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="getDataOfTest()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
               </tbody>
@@ -433,7 +433,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="checkNameAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="createPrescription()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
                 
@@ -466,7 +466,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>Set Paid Prescription</td>
+                  <td>Set paid Of Prescription</td>
                   <td>
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
@@ -477,7 +477,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="setPaidOfPrescription()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
                 <tr>
@@ -487,12 +487,11 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-sm">Prescription ID</span>
                       </div>
-                      <input id="prescriptionPrivateKeySetPaid" type="number" class="form-control" aria-label="Small" 
+                      <input id="prescriptionIdSetPaid" type="number" class="form-control" aria-label="Small" 
                             aria-describedby="inputGroup-sizing-sm" >
                     </div>
                   </td>
                   <td>
-                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
                 <tr>
@@ -502,12 +501,12 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-sm">Prescription ID</span>
                       </div>
-                      <input id="prescriptionPrivateKeySetPaid" type="number" class="form-control" aria-label="Small" 
+                      <input id="prescriptionId" type="number" class="form-control" aria-label="Small" 
                             aria-describedby="inputGroup-sizing-sm" >
                     </div>
                   </td>
                   <td>
-                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="getPrescriptionData()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
               </tbody>
@@ -531,7 +530,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="checkNameAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="createMedicine()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
                 <tr>
@@ -574,7 +573,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="checkAddressName()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="updateMedicine()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
                 <tr>
@@ -631,7 +630,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="getMedicineHistory()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
                 <tr>
@@ -646,7 +645,7 @@
                     </div>
                   </td>
                   <td>
-                    <button onclick="listAddress()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
+                    <button onclick="getMedicineData()" type="submit" class="btn btn-danger btn-sm my-submit-btn">Submit</button>
                   </td>
                 </tr>
               </tbody>
@@ -709,7 +708,7 @@
     }
 
     // PATIENT
-    const createPatient = async ()=> {
+    const createPatient = async () => {
       const privateKey = $('#patientPrivateKey').val()
       const name = $('#patientName').val()
       const gender = $('#patientGender').val()
@@ -724,6 +723,130 @@
       initResult(keys, values)
     }
 
+    const getIdOfPatient = async () => {
+      const phoneNumber = $('#getIdPhone').val()
+      const data = await getIdPatient(phoneNumber)
+      const keys = Object.keys(data.data)
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    const getDataOfPatient = async () => {
+      const patientId = $('#patientId').val()
+      const data = await getPatient(patientId)
+      const keys = Object.keys(data.data)
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    // VISIT
+    const createVisit = async () => {
+      const privateKey = $('#visitPrivateKey').val()
+      const patientId = $('#visitPatientId').val()
+      const data = await mintVisit(privateKey, patientId)
+      const keys = Object.keys(data.data)
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    const getDataOfVisit = async () => {
+      const patientId = $('#visitId').val()
+      const data = await getVisit(patientId)
+      const keys = Object.keys(data.data)
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    // TEST RESULT
+    const createTest = async () => {
+      const privateKey = $('#testResultPrivateKey').val()
+      const name = $('#testResultName').val()
+      const result = $('#testResult').val()
+      const visitId = $('#testResultVisitId').val()
+      const data = await mintTestResult(privateKey, name, result, visitId)
+      const keys = Object.keys(data.data)
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    const getDataOfTest = async () => {
+      const testId = $('#testResultId').val()
+      const data = await getDataOfTest(testId)
+      const keys = Object.keys(data.data)
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    //  PRESCRIPTION
+    const createPrescription = () => {
+      const privateKey = $('#prescriptionPrivateKey').val()
+      const listIdStr = $('#prescriptionListId').val()
+      const listId = listIdStr.split(',').map((item) => {
+        return Number(item)
+      })
+      const visitId = $('#prescriptionVisitId').val()
+      const data = await mintPrescription(privateKey, listId, visitId)
+      const keys = Object.keys(data.data)
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    const setPaidOfPrescription = async () => {
+      const privateKey = $('#prescriptionPrivateKeySetPaid').val()
+      const prescriptionId = $('#prescriptionIdSetPaid').val()
+      const data = await setPaidPrescription(privateKey, prescriptionId )
+      const keys = Object.keys(data.data)
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    const getPrescriptionData = async () => {
+      const prescriptionId = $('#prescriptionId').val()
+      const data = await getPrescription( prescriptionId )
+      const keys = Object.keys(data.data)
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    // MEDICINE
+    const createMedicine = async () => {
+      const privateKey = $('#medicinePrivateKeyCreate').val()
+      const name = $('#medicineNameCreate').val()
+      const amount = $('#medicineAmountCreate').val()
+      const data = await mintMedicine( privateKey, name, amount )
+      const keys = Object.keys(data.data)
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    const updateMedicine = async () => {
+      const privateKey = $('#medicinePrivateKeyUpdate').val()
+      const medicineId = $('#medicineIdUpdate').val()
+      const name = $('#medicineNameUpdate').val()
+      const amount = $('#medicineAmountUpdate').val()
+      const data = await updateMedicine( privateKey, medicineId, name, amount )
+      const keys = Object.keys(data.data)
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    const getMedicineHistory = async () => {
+      const medicineId = $('#medicineIDGetHistory').val()
+      const data = await getHistoryMedicine(medicineId)
+      const keys = Object.keys(data.data)
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    const getMedicineData = async () => {
+      const medicineId = $('#medicineIDGet').val()
+      const data = await getHistoryMedicine(medicineId)
+      const keys = Object.keys(data.data)
+      const values = Object.values(data.data)
+      initResult(keys, values)
+    }
+
+    // AUTHENTICATOR
     const getUserRole = async (userAddress) => {
       const myJson = await $.get(`http://localhost:8088/api/authenticator/CheckAuth/?userAddress=${userAddress}`)
       return(myJson);
