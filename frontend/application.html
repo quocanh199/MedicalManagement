@@ -4,7 +4,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script type="text/javascript" src="script.js"></script>
+    <script type='text/javascript' src="script.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"       
 
     integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -12,7 +12,7 @@
     integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
     <link rel="icon" href="./images/icon.png">
-    <title>Cổng Thông tin điện tử Chính Phủ</title>
+    <title>Med Man</title>
   </head>
   <body>
     <style>
@@ -678,7 +678,6 @@
   </body>
 
   <script>
-
     // SITE
     const createSite = async () => {
       const privateKey = $('#sitePrivateKey').val()
@@ -699,7 +698,7 @@
       initResult(keys, values)
     }
 
-    const getAllSite = async () =>{
+    const getAllSite = async () => {
       const data = await getListAllSite();
       
       const keys = ['List Sites']
@@ -718,7 +717,8 @@
       const siteId = $('#patientSiteId').val()
 
       const data = await mintPatient(privateKey, name, gender, dateOfBirth, patientAddress, phoneNumber, siteId);
-      const keys = Object.keys(data.data)
+      const keys = ["Patient ID"]
+
       const values = Object.values(data.data)
       initResult(keys, values)
     }
@@ -726,7 +726,7 @@
     const getIdOfPatient = async () => {
       const phoneNumber = $('#getIdPhone').val()
       const data = await getIdPatient(phoneNumber)
-      const keys = Object.keys(data.data)
+      const keys = ["Patient ID"]
       const values = Object.values(data.data)
       initResult(keys, values)
     }
@@ -736,7 +736,15 @@
       const data = await getPatient(patientId)
       const keys = Object.keys(data.data)
       const values = Object.values(data.data)
-      initResult(keys, values)
+
+      const info_keys = ["Patient's name", "Patient's gender", "Patient's DoB", "Patient's address", "Patient's phone", "Time Created", "Last Modified"]
+      const info_values = Object.values(data.data)[0]
+      info_values[5] = new Date(info_values[5] * 1000)
+      info_values[6] = new Date(info_values[6] * 1000)
+
+      const list_keys = ["List of Visit ID"]
+      const list_values = [Object.values(data.data)[1]]
+      initResult(info_keys.concat(list_keys), info_values.concat(list_values))
     }
 
     // VISIT
@@ -744,7 +752,7 @@
       const privateKey = $('#visitPrivateKey').val()
       const patientId = $('#visitPatientId').val()
       const data = await mintVisit(privateKey, patientId)
-      const keys = Object.keys(data.data)
+      const keys = ["Visit ID"]
       const values = Object.values(data.data)
       initResult(keys, values)
     }
@@ -752,8 +760,9 @@
     const getDataOfVisit = async () => {
       const patientId = $('#visitId').val()
       const data = await getVisit(patientId)
-      const keys = Object.keys(data.data)
+      const keys = ["Time created", "Prescription ID", "List Test Result"]
       const values = Object.values(data.data)
+      values[0] = new Date(values[0] * 1000)
       initResult(keys, values)
     }
 
@@ -764,21 +773,22 @@
       const result = $('#testResult').val()
       const visitId = $('#testResultVisitId').val()
       const data = await mintTestResult(privateKey, name, result, visitId)
-      const keys = Object.keys(data.data)
+      const keys = ["Test ID"]
       const values = Object.values(data.data)
       initResult(keys, values)
     }
 
     const getDataOfTest = async () => {
       const testId = $('#testResultId').val()
-      const data = await getDataOfTest(testId)
-      const keys = Object.keys(data.data)
+      const data = await getTestResult(testId)
+      const keys = ["Test", "Result", "Time created"]
       const values = Object.values(data.data)
+      values[2] = new Date(values[2] * 1000)
       initResult(keys, values)
     }
 
     //  PRESCRIPTION
-    const createPrescription = () => {
+    const createPrescription = async () => {
       const privateKey = $('#prescriptionPrivateKey').val()
       const listIdStr = $('#prescriptionListId').val()
       const listId = listIdStr.split(',').map((item) => {
@@ -786,8 +796,8 @@
       })
       const visitId = $('#prescriptionVisitId').val()
       const data = await mintPrescription(privateKey, listId, visitId)
-      const keys = Object.keys(data.data)
-      const values = Object.values(data.data)
+      const keys = ["Prescription ID"]
+      const values = [data.data]
       initResult(keys, values)
     }
 
@@ -795,16 +805,19 @@
       const privateKey = $('#prescriptionPrivateKeySetPaid').val()
       const prescriptionId = $('#prescriptionIdSetPaid').val()
       const data = await setPaidPrescription(privateKey, prescriptionId )
-      const keys = Object.keys(data.data)
-      const values = Object.values(data.data)
+      const keys = ["Pay"]
+      const values = ["Done"]
       initResult(keys, values)
     }
 
     const getPrescriptionData = async () => {
       const prescriptionId = $('#prescriptionId').val()
       const data = await getPrescription( prescriptionId )
-      const keys = Object.keys(data.data)
-      const values = Object.values(data.data)
+      const keys = ["Paid Status", "Time Created", "List Medicine"]
+      // const info_keys = 
+      let values = Object.values(data.data)
+      values = values[0].concat([values[1]])
+      values[1] = new Date(values[1]*1000)
       initResult(keys, values)
     }
 
@@ -814,8 +827,8 @@
       const name = $('#medicineNameCreate').val()
       const amount = $('#medicineAmountCreate').val()
       const data = await mintMedicine( privateKey, name, amount )
-      const keys = Object.keys(data.data)
-      const values = Object.values(data.data)
+      const keys = ["Medicine ID"]
+      const values = [data.data]
       initResult(keys, values)
     }
 
@@ -824,25 +837,26 @@
       const medicineId = $('#medicineIdUpdate').val()
       const name = $('#medicineNameUpdate').val()
       const amount = $('#medicineAmountUpdate').val()
-      const data = await updateMedicine( privateKey, medicineId, name, amount )
-      const keys = Object.keys(data.data)
-      const values = Object.values(data.data)
+      const data = await updateMedicineRequest( privateKey, medicineId, name, amount )
+      const keys = ["Update Medicine"]
+      const values = ["Done"]
       initResult(keys, values)
     }
 
     const getMedicineHistory = async () => {
       const medicineId = $('#medicineIDGetHistory').val()
       const data = await getHistoryMedicine(medicineId)
-      const keys = Object.keys(data.data)
-      const values = Object.values(data.data)
+      const keys = ["History changes"]
+      const values = [Object.values(data.data)]
       initResult(keys, values)
     }
 
     const getMedicineData = async () => {
       const medicineId = $('#medicineIDGet').val()
-      const data = await getHistoryMedicine(medicineId)
-      const keys = Object.keys(data.data)
+      const data = await getMedicine(medicineId)
+      const keys = ["Name", "Amount"]
       const values = Object.values(data.data)
+      
       initResult(keys, values)
     }
 

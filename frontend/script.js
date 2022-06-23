@@ -51,9 +51,9 @@ const getIdPatient = async (phoneNumber) => {
 };
 
 const getPatient = async (patientId) => {
-  const res = await $.get(`http://localhost:8088/api/patient/get`, {
-    patientId,
-  });
+  const res = await $.get(
+    `http://localhost:8088/api/patient/get?patientId=${patientId}`
+  );
   return res;
 };
 
@@ -126,7 +126,7 @@ const mintMedicine = async (privateKey, name, amount) => {
   return res;
 };
 
-const updateMedicine = async (privateKey, medicineId, name, amount) => {
+const updateMedicineRequest = async (privateKey, medicineId, name, amount) => {
   const res = await $.post(`http://localhost:8088/api/medicine/update`, {
     privateKey,
     medicineId,
