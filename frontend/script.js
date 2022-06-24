@@ -1,28 +1,43 @@
+let contractInfo = {};
+$.getJSON("config.json", (data) => {
+  contractInfo = data;
+});
+
 // Site Script
-const getListAllSite = async () => {
-  const res = await $.get(`http://localhost:8088/api/site/getAll/`);
-  return res;
-};
-
-const getSite = async (siteId) => {
-  const res = await $.get(
-    `http://localhost:8088/api/site/get?siteId=${siteId}`
+const getAllSiteSC = async () => {
+  window.web3 = new Web3(window.ethereum);
+  const siteContract = new window.web3.eth.Contract(
+    contractInfo.Site.abi,
+    contractInfo.Site.address
   );
-  return res;
+  const data = await siteContract.methods.getAllSite().call();
+  return data;
 };
 
-const mintSite = async (privateKey, name, siteAddress) => {
-  const res = await $.post(`http://localhost:8088/api/site/mint`, {
-    privateKey,
-    name,
-    siteAddress,
+const getSiteSC = async (siteId) => {
+  window.web3 = new Web3(window.ethereum);
+  const siteContract = new window.web3.eth.Contract(
+    contractInfo.Site.abi,
+    contractInfo.Site.address
+  );
+  const data = await siteContract.methods.getSite(siteId).call();
+  return data;
+};
+
+const mintSite = async (name, siteAddress) => {
+  window.web3 = new Web3(window.ethereum);
+  const siteContract = new window.web3.eth.Contract(
+    contractInfo.Site.abi,
+    contractInfo.Site.address
+  );
+  const data = await siteContract.methods.mint(name, siteAddress).send({
+    from: (await getCurrentAccounts())[0],
   });
-  return res;
+  return data;
 };
 
 // Patient Script
 const mintPatient = async (
-  privateKey,
   name,
   gender,
   dateOfBirth,
@@ -30,122 +45,220 @@ const mintPatient = async (
   phoneNumber,
   siteId
 ) => {
-  const res = await $.post(`http://localhost:8088/api/patient/mint`, {
-    privateKey,
-    name,
-    gender,
-    dateOfBirth,
-    patientAddress,
-    phoneNumber,
-    siteId,
-  });
+  window.web3 = new Web3(window.ethereum);
+  const patientContract = new window.web3.eth.Contract(
+    contractInfo.Patient.abi,
+    contractInfo.Patient.address
+  );
+  const data = await patientContract.methods
+    .mint(name, gender, dateOfBirth, patientAddress, phoneNumber, siteId)
+    .send({
+      from: (await getCurrentAccounts())[0],
+    });
 
-  return res;
+  return data;
 };
 
-const getIdPatient = async (phoneNumber) => {
-  const res = await $.get(
-    `http://localhost:8088/api/patient/getID?phoneNumber=${phoneNumber}`
+const getPatientFromPhoneSC = async (phoneNumber) => {
+  window.web3 = new Web3(window.ethereum);
+  const patientContract = new window.web3.eth.Contract(
+    contractInfo.Patient.abi,
+    contractInfo.Patient.address
   );
-  return res;
+  const data = await patientContract.methods
+    .getPatientFromPhone(phoneNumber)
+    .call();
+
+  return data;
 };
 
-const getPatient = async (patientId) => {
-  const res = await $.get(
-    `http://localhost:8088/api/patient/get?patientId=${patientId}`
+const getPatientSC = async (patientId) => {
+  window.web3 = new Web3(window.ethereum);
+  const patientContract = new window.web3.eth.Contract(
+    contractInfo.Patient.abi,
+    contractInfo.Patient.address
   );
-  return res;
+  const data = await patientContract.methods.getPatient(patientId).call();
+
+  return data;
 };
 
 // Visit Script
-const mintVisit = async (privateKey, patientId) => {
-  const res = await $.post(`http://localhost:8088/api/visit/mint/`, {
-    privateKey,
-    patientId,
+const mintVisit = async (patientId) => {
+  window.web3 = new Web3(window.ethereum);
+  const visitContract = new window.web3.eth.Contract(
+    contractInfo.Visit.abi,
+    contractInfo.Visit.address
+  );
+  const data = await visitContract.methods.mint(patientId).send({
+    from: (await getCurrentAccounts())[0],
   });
-  return res;
+
+  return data;
 };
 
-const getVisit = async (visitId) => {
-  const res = await $.get(
-    `http://localhost:8088/api/visit/get?visitId=${visitId}`
+const getVisitSC = async (visitId) => {
+  window.web3 = new Web3(window.ethereum);
+  const visitContract = new window.web3.eth.Contract(
+    contractInfo.Visit.abi,
+    contractInfo.Visit.address
   );
-  return res;
+  const data = await visitContract.methods.getVisit(visitId).call();
+
+  return data;
 };
 
 // Test Result Script
-const mintTestResult = async (privateKey, name, result, visitId) => {
-  const res = await $.post(`http://localhost:8088/api/testResult/mint/`, {
-    privateKey,
-    name,
-    result,
-    visitId,
-  });
-  return res;
+const mintTestResult = async (name, result, visitId) => {
+  window.web3 = new Web3(window.ethereum);
+  const testResultContract = new window.web3.eth.Contract(
+    contractInfo.TestResult.abi,
+    contractInfo.TestResult.address
+  );
+  const data = await testResultContract.methods
+    .mint(name, result, visitId)
+    .send({
+      from: (await getCurrentAccounts())[0],
+    });
+
+  return data;
 };
 
-const getTestResult = async (testId) => {
-  const res = await $.get(
-    `http://localhost:8088/api/testResult/get?testId=${testId}`
+const getTestResultSC = async (testId) => {
+  window.web3 = new Web3(window.ethereum);
+  const testResultContract = new window.web3.eth.Contract(
+    contractInfo.TestResult.abi,
+    contractInfo.TestResult.address
   );
-  return res;
+  const data = await testResultContract.methods.getTestResult(testId).call();
+
+  return data;
 };
 
 // Prescription Script
-const mintPrescription = async (privateKey, listId, visitId) => {
-  const res = await $.post(`http://localhost:8088/api/prescription/mint/`, {
-    privateKey,
-    listId,
-    visitId,
-  });
-  return res;
-};
-
-const setPaidPrescription = async (privateKey, prescriptionId) => {
-  const res = await $.post(`http://localhost:8088/api/prescription/setPaid`, {
-    privateKey,
-    prescriptionId,
-  });
-  return res;
-};
-
-const getPrescription = async (prescriptionId) => {
-  const res = await $.get(
-    `http://localhost:8088/api/prescription/get?prescriptionId=${prescriptionId}`
+const mintPrescription = async (listId, visitId) => {
+  window.web3 = new Web3(window.ethereum);
+  const prescriptionContract = new window.web3.eth.Contract(
+    contractInfo.Prescription.abi,
+    contractInfo.Prescription.address
   );
-  return res;
+  const data = await prescriptionContract.methods.mint(listId, visitId).send({
+    from: (await getCurrentAccounts())[0],
+  });
+
+  return data;
+};
+
+const setPaidPrescriptionSC = async (prescriptionId) => {
+  window.web3 = new Web3(window.ethereum);
+  const prescriptionContract = new window.web3.eth.Contract(
+    contractInfo.Prescription.abi,
+    contractInfo.Prescription.address
+  );
+  const data = await prescriptionContract.methods
+    .setPaidPrescription(prescriptionId)
+    .send({
+      from: (await getCurrentAccounts())[0],
+    });
+
+  return data;
+};
+
+const getPrescriptionSC = async (prescriptionId) => {
+  window.web3 = new Web3(window.ethereum);
+  const prescriptionContract = new window.web3.eth.Contract(
+    contractInfo.Prescription.abi,
+    contractInfo.Prescription.address
+  );
+  const data = await prescriptionContract.methods
+    .getPrescription(prescriptionId)
+    .call();
+
+  return data;
 };
 
 // Medicine Script
-const mintMedicine = async (privateKey, name, amount) => {
-  const res = await $.post(`http://localhost:8088/api/medicine/mint`, {
-    privateKey,
-    name,
-    amount,
-  });
-  return res;
-};
-
-const updateMedicineRequest = async (privateKey, medicineId, name, amount) => {
-  const res = await $.post(`http://localhost:8088/api/medicine/update`, {
-    privateKey,
-    medicineId,
-    name,
-    amount,
-  });
-  return res;
-};
-
-const getHistoryMedicine = async (medicineId) => {
-  const res = await $.get(
-    `http://localhost:8088/api/medicine/getHistory?medicineId=${medicineId}`
+const mintMedicine = async (name, amount) => {
+  window.web3 = new Web3(window.ethereum);
+  const medicineContract = new window.web3.eth.Contract(
+    contractInfo.Medicine.abi,
+    contractInfo.Medicine.address
   );
-  return res;
+  const data = await medicineContract.methods.mint(name, amount).send({
+    from: (await getCurrentAccounts())[0],
+  });
+  return data;
 };
 
-const getMedicine = async (medicineId) => {
-  const res = await $.get(
-    `http://localhost:8088/api/medicine/get?medicineId=${medicineId}`
+const updateMedicineSC = async (medicineId, name, amount) => {
+  window.web3 = new Web3(window.ethereum);
+  const medicineContract = new window.web3.eth.Contract(
+    contractInfo.Medicine.abi,
+    contractInfo.Medicine.address
   );
-  return res;
+  const data = await medicineContract.methods
+    .updateMedicine(medicineId, name, amount)
+    .send({
+      from: (await getCurrentAccounts())[0],
+    });
+  return data;
+};
+
+const getMedicineHistorySC = async (medicineId) => {
+  window.web3 = new Web3(window.ethereum);
+  const medicineContract = new window.web3.eth.Contract(
+    contractInfo.Medicine.abi,
+    contractInfo.Medicine.address
+  );
+  const data = await medicineContract.methods
+    .getMedicineHistory(medicineId)
+    .call();
+
+  return data;
+};
+
+const getMedicineSC = async (medicineId) => {
+  window.web3 = new Web3(window.ethereum);
+  const medicineContract = new window.web3.eth.Contract(
+    contractInfo.Medicine.abi,
+    contractInfo.Medicine.address
+  );
+  const data = await medicineContract.methods.getMedicine(medicineId).call();
+
+  return data;
+};
+
+// AUTHENTICATOR
+const getCurrentAccounts = async () => {
+  const accounts = await ethereum.request({
+    method: "eth_requestAccounts",
+  });
+  return accounts;
+};
+
+const getUserRole = async () => {
+  const myJson = await $.get(
+    `http://localhost:8088/api/authenticator/CheckAuth/?userAddress=${userAddress}`
+  );
+  return myJson;
+};
+
+const getPublicKey = (privateKey) => {
+  const wallet = Wallet.fromPrivateKey(privateKey);
+  const publicKey = wallet.getPublicKeyString();
+  return publicKey;
+};
+
+// window.web3 = new Web3(window.ethereum)
+// new window.web3.eth.Contract()
+const testWeb3 = async () => {
+  window.web3 = new Web3(window.ethereum);
+  const siteContract = new window.web3.eth.Contract(
+    contractInfo.Site.abi,
+    contractInfo.Site.address
+  );
+  const data = await siteContract.methods.mint("Vinmec", "Kontum").send({
+    from: (await getCurrentAccounts())[0],
+  });
+  return data;
 };

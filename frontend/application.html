@@ -5,46 +5,17 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script type='text/javascript' src="script.js"></script>
+    <script type='text/javascript' src="web3.min.js" ></script>
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"       
-
     integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-
-    <link rel="icon" href="./images/icon.png">
+    <link href="https://www.moh.gov.vn/byt-theme/images/favicon.ico" rel="Shortcut Icon"> 
+    <link class="lfr-css-file" href="https://www.moh.gov.vn/byt-theme/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1614932945203" rel="stylesheet" type="text/css"> 
     <title>Med Man</title>
-    <meta content="initial-scale=1.0, width=device-width" name="viewport"> 
-    <link id="import_link_chatboxStyle_fpt_ai" rel="stylesheet" href="https://static.fpt.ai/ehealth-gov-vn/src/livechat.css">
-    <link id="import_link_chatboxJqueryMobile_fpt_ai" rel="stylesheet" href="https://static.fpt.ai/ehealth-gov-vn/src/jquery.mobile-1.5.0-alpha.1.min.css">
-    <link id="import_link_fontawesome_fpt_ai" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link id="import_link_fontai_fpt_ai" rel="stylesheet" href="https://static.fpt.ai/ehealth-gov-vn/src/icon-ai/style.css">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,800,700,600|Montserrat:400,500,600,700|Raleway:100,300,600,700,800" rel="stylesheet" type="text/css"> 
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-     <link href="https://www.moh.gov.vn/byt-theme/images/favicon.ico" rel="Shortcut Icon"> 
-     <link href="https://moh.gov.vn" rel="canonical">
-      <link href="https://moh.gov.vn" hreflang="x-default" rel="alternate"> 
-      <link href="https://moh.gov.vn/vi" hreflang="vi-VN" rel="alternate">
-       <link href="https://moh.gov.vn/en" hreflang="en-US" rel="alternate">
-        <link class="lfr-css-file" href="https://www.moh.gov.vn/byt-theme/css/aui.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1614932945203" rel="stylesheet" type="text/css"> 
-        <link href="/html/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1452584184000" rel="stylesheet" type="text/css">
-         <link href="https://www.moh.gov.vn/mixed-portlet/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1653663072337" rel="stylesheet" type="text/css"> 
-         <link href="https://www.moh.gov.vn/html/portlet/search/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1653663194805" rel="stylesheet" type="text/css"> 
-         <link href="https://www.moh.gov.vn/news-portlet/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1653663194805" rel="stylesheet" type="text/css"> 
-         <link href="https://www.moh.gov.vn/banner-portlet/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1653663069438" rel="stylesheet" type="text/css"> 
-         <link href="https://www.moh.gov.vn/menu-portlet/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1653663069438" rel="stylesheet" type="text/css"> 
-         <link href="https://www.moh.gov.vn/link-portlet/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1653663069438" rel="stylesheet" type="text/css"> 
-         <link href="https://www.moh.gov.vn/vote-portlet/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1653663194805" rel="stylesheet" type="text/css"> 
-         <link href="https://www.moh.gov.vn/visit-counter-portlet/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1653663194805" rel="stylesheet" type="text/css"> 
-         <link href="https://www.moh.gov.vn/html/portlet/asset_publisher/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1653663194805" rel="stylesheet" type="text/css"> 
-         <link href="https://www.moh.gov.vn/emoh-portlet/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1653663069438" rel="stylesheet" type="text/css"> 
-         <link href="https://www.moh.gov.vn/notifications-portlet/notifications/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1653663194805" rel="stylesheet" type="text/css"> 
-         <script async="" src="https://www.google-analytics.com/analytics.js"></script>
-         <script type="text/javascript" async="" defer="" src="https://f-emc.ngsp.gov.vn/embed/gov-tracking.min.js"></script>
-         <script type="text/javascript">
-         var Liferay={Browser:{acceptsGzip:function(){return true},getMajorVersion:function(){return 0},getRevision:function(){return""},getVersion:function(){return""},isAir:function(){return false},isChrome:function(){return false},isFirefox:function(){return false},isGecko:function(){return false},isIe:function(){return false},isIphone:function(){return false},isLinux:function(){return false},isMac:function(){return false},isMobile:function(){return false},isMozilla:function(){return false},isOpera:function(){return false},isRtf:function(){return false},isSafari:function(){return false},isSun:function(){return false},isWap:function(){return false},isWapXhtml:function(){return false},isWebKit:function(){return false},isWindows:function(){return false},isWml:function(){return false}},Data:{NAV_SELECTOR:"#navigation",isCustomizationView:function(){return false},notices:[null]},ThemeDisplay:{getLayoutId:function(){return"1"},getLayoutURL:function(){return"https://www.moh.gov.vn/web/guest/home"},getParentLayoutId:function(){return"0"},isPrivateLayout:function(){return"false"},isVirtualLayout:function(){return false},getBCP47LanguageId:function(){return"vi-VN"},getCDNBaseURL:function(){return"https://www.moh.gov.vn"},getCDNDynamicResourcesHost:function(){return""},getCDNHost:function(){return""},getCompanyId:function(){return"20155"},getCompanyGroupId:function(){return"20195"},getDefaultLanguageId:function(){return"vi_VN"},getDoAsUserIdEncoded:function(){return""},getLanguageId:function(){return"vi_VN"},getParentGroupId:function(){return"20182"},getPathContext:function(){return""},getPathImage:function(){return"/image"},getPathJavaScript:function(){return"/html/js"},getPathMain:function(){return"/c"},getPathThemeImages:function(){return"https://www.moh.gov.vn/byt-theme/images"},getPathThemeRoot:function(){return"/byt-theme"},getPlid:function(){return"20185"},getPortalURL:function(){return"https://www.moh.gov.vn"},getPortletSetupShowBordersDefault:function(){return true},getScopeGroupId:function(){return"20182"},getScopeGroupIdOrLiveGroupId:function(){return"20182"},getSessionId:function(){return""},getSiteGroupId:function(){return"20182"},getURLControlPanel:function(){return"/group/control_panel?refererPlid=20185"},getURLHome:function(){return"https\x3a\x2f\x2fwww\x2emoh\x2egov\x2evn\x2fweb\x2fguest"},getUserId:function(){return"20159"},getUserName:function(){return""},isAddSessionIdToURL:function(){return false},isFreeformLayout:function(){return false},isImpersonated:function(){return false},isSignedIn:function(){return false},isStateExclusive:function(){return false},isStateMaximized:function(){return false},isStatePopUp:function(){return false}},PropsValues:{NTLM_AUTH_ENABLED:false}};var themeDisplay=Liferay.ThemeDisplay;Liferay.AUI={getAvailableLangPath:function(){return"available_languages.jsp?browserId=other&themeId=byt_WAR_byttheme&colorSchemeId=01&minifierType=js&languageId=vi_VN&b=6205&t=1578544651158"},getCombine:function(){return true},getComboPath:function(){return"/combo/?browserId=other&minifierType=&languageId=vi_VN&b=6205&t=1578544651158&"},getFilter:function(){return"min"},getJavaScriptRootPath:function(){return"/html/js"},getLangPath:function(){return"aui_lang.jsp?browserId=other&themeId=byt_WAR_byttheme&colorSchemeId=01&minifierType=js&languageId=vi_VN&b=6205&t=1578544651158"},getStaticResourceURLParams:function(){return"?browserId=other&minifierType=&languageId=vi_VN&b=6205&t=1578544651158"}};Liferay.authToken="LCovHdmUkj";Liferay.currentURL="\x2f";Liferay.currentURLEncoded="%2F";</script> <script src="/html/js/barebone.jsp?browserId=other&amp;themeId=byt_WAR_byttheme&amp;colorSchemeId=01&amp;minifierType=js&amp;minifierBundleId=javascript.barebone.files&amp;languageId=vi_VN&amp;b=6205&amp;t=1578544651158" type="text/javascript"></script> <script type="text/javascript">Liferay.Portlet.list=["time_WAR_mixedportlet","3","news_WAR_newsportlet_INSTANCE_N1qaWSP7nqre","displaybanner_WAR_bannerportlet_INSTANCE_wmbaV7StIpF4","displaybanner2_WAR_bannerportlet_INSTANCE_Rv6GwwcW6LFc","displayfade_WAR_bannerportlet_INSTANCE_ghfUIea1yeyg","displaybanner2_WAR_bannerportlet_INSTANCE_pshk9wOCCkCp","displaymenu_WAR_menuportlet_INSTANCE_vcHV12Xomgmf","displaybanner_WAR_bannerportlet_INSTANCE_8NeM0kNwtuPD","linkdropdown_WAR_linkportlet","displayvote_WAR_voteportlet","visitcounter_WAR_visitcounterportlet","news_WAR_newsportlet_INSTANCE_oLFgNk6ZTXe2","101_INSTANCE_k206Q9qkZOqn","101_INSTANCE_DOHhlnDN87WZ","101_INSTANCE_gHbla8vOQDuS","101_INSTANCE_vjYyM7O9aWnX","displaybanner_WAR_bannerportlet_INSTANCE_HGxiX7MsKaSV","displaybanner_WAR_bannerportlet_INSTANCE_bDTLV66i2CYu","emoh_WAR_emohportlet","display4col_WAR_bannerportlet_INSTANCE_3BRXGWMRsGLR","display4col_WAR_bannerportlet_INSTANCE_x5IcztlxFVts","101"];</script> <link class="lfr-css-file" href="https://www.moh.gov.vn/byt-theme/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1614932945203" rel="stylesheet" type="text/css"> <style type="text/css">#p_p_id_time_WAR_mixedportlet_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_3_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_news_WAR_newsportlet_INSTANCE_N1qaWSP7nqre_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_displaybanner_WAR_bannerportlet_INSTANCE_wmbaV7StIpF4_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_displaybanner2_WAR_bannerportlet_INSTANCE_Rv6GwwcW6LFc_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_displayfade_WAR_bannerportlet_INSTANCE_ghfUIea1yeyg_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_displaybanner2_WAR_bannerportlet_INSTANCE_pshk9wOCCkCp_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_displaymenu_WAR_menuportlet_INSTANCE_vcHV12Xomgmf_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_displaybanner_WAR_bannerportlet_INSTANCE_8NeM0kNwtuPD_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_linkdropdown_WAR_linkportlet_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_displayvote_WAR_voteportlet_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_visitcounter_WAR_visitcounterportlet_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_news_WAR_newsportlet_INSTANCE_oLFgNk6ZTXe2_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_101_INSTANCE_k206Q9qkZOqn_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_101_INSTANCE_DOHhlnDN87WZ_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_101_INSTANCE_gHbla8vOQDuS_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_101_INSTANCE_vjYyM7O9aWnX_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_displaybanner_WAR_bannerportlet_INSTANCE_HGxiX7MsKaSV_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_displaybanner_WAR_bannerportlet_INSTANCE_bDTLV66i2CYu_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_emoh_WAR_emohportlet_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_display4col_WAR_bannerportlet_INSTANCE_3BRXGWMRsGLR_ .portlet-borderless-container{border-width:;border-style:}#p_p_id_display4col_WAR_bannerportlet_INSTANCE_x5IcztlxFVts_ .portlet-borderless-container{border-width:;border-style:}</style> <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <script charset="utf-8" id="yui_patched_v3_11_0_1_1655992482594_61" src="/combo/?browserId=other&amp;minifierType=&amp;languageId=vi_VN&amp;b=6205&amp;t=1578544651158&amp;/html/js/aui/color-base/color-base-min.js" async=""></script><script charset="utf-8" id="yui_patched_v3_11_0_1_1655992482594_71" src="/combo/?browserId=other&amp;minifierType=&amp;languageId=vi_VN&amp;b=6205&amp;t=1578544651158&amp;/html/js/aui/event-touch/event-touch-min.js&amp;/html/js/aui/event-move/event-move-min.js" async=""></script><link charset="utf-8" rel="stylesheet" id="yui_patched_v3_11_0_1_1655992482594_73" href="/combo/?browserId=other&amp;minifierType=&amp;languageId=vi_VN&amp;b=6205&amp;t=1578544651158&amp;/html/js/aui/widget-base/assets/skins/sam/widget-base.css"><script charset="utf-8" id="yui_patched_v3_11_0_1_1655992482594_74" src="/html/js/liferay/available_languages.jsp?browserId=other&amp;themeId=byt_WAR_byttheme&amp;colorSchemeId=01&amp;minifierType=js&amp;languageId=vi_VN&amp;b=6205&amp;t=1578544651158" async=""></script><script charset="utf-8" id="yui_patched_v3_11_0_1_1655992482594_75" src="/combo/?browserId=other&amp;minifierType=&amp;languageId=vi_VN&amp;b=6205&amp;t=1578544651158&amp;/html/js/aui/escape/escape-min.js&amp;/html/js/aui/base-core/base-core-min.js&amp;/html/js/aui/base-observable/base-observable-min.js&amp;/html/js/aui/aui-widget-cssclass/aui-widget-cssclass-min.js&amp;/html/js/aui/aui-widget-toggle/aui-widget-toggle-min.js&amp;/html/js/aui/base-build/base-build-min.js&amp;/html/js/liferay/language.js&amp;/html/js/aui/transition/transition-min.js&amp;/html/js/aui/querystring-stringify/querystring-stringify-min.js&amp;/html/js/aui/cookie/cookie-min.js&amp;/html/js/liferay/session.js&amp;/html/js/aui/aui-io-request/aui-io-request-min.js&amp;/html/js/liferay/ajax_session.js" async="">
-         </script>
   </head>
-  <head> 
+  <head>
     <title>Trang chủ - Cổng thông tin Bộ Y tế</title>   
   </head>
   <body>
@@ -123,7 +94,8 @@
         .bg-glass {
           background-color: hsla(0, 0%, 90%, 0.7) !important;
           backdrop-filter: saturate(200%) blur(25px);
-          border-radius: 0%;
+          border-radius: 0.25rem;
+          padding-bottom: 5px;
         }
 
         .center-btn {
@@ -138,12 +110,16 @@
         .row {
           height: 60vh;
         }
+        #header-wrap{
+          border-radius:0.25rem 
+        }
+
     </style>
-    <div class="background-radial-gradient">
-      <div class="container bg-glass">
-        <div class="bg-header" tabindex="0"></div>
-        <header id="header" role="banner"> 
-          <div id="header-wrap"> 
+    <div class="background-radial-gradient pt-5">
+      <div class="container bg-glass pt-3 mb-3">
+        <div class="bg-header " tabindex="0"></div>
+        <header id="header" class="mb-3" role="banner" > 
+          <div id="header-wrap"  > 
             <div class="container"> 
               <!--Navigation Resposnive Trigger--> 
               <div id="mainMenu-trigger"> 
@@ -219,7 +195,7 @@
           </div> 
           <!-- <a data-redirect="false" href="https://www.moh.gov.vn/c/portal/login?p_l_id=20185" id="sign-in" rel="nofollow">Đăng nhập</a> --> 
         </header>
-        <table class="table table-borderless">
+        <table class="table table-borderless bg-white" style="border-radius:0.25rem ">
           <tr>
             <td>
               <table class="table">
@@ -230,7 +206,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Create Site</td>
+                    <td class="font-weight-bold">Create Site</td>
                     <td>
                       <div class="input-group input-group-sm">
                         <!-- <div class="input-group-prepend">
@@ -275,14 +251,14 @@
                     </td>
                   </tr>
                   <tr>
-                    <td>Get data of Site</td>
+                    <td class="font-weight-bold">Get data of Site</td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Site ID</span>
-                        </div>
+                        </div> -->
                         <input id="siteId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm">
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Site ID">
                       </div>
                     </td>
                     <td>
@@ -290,7 +266,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td>Get all Site</td>
+                    <td class="font-weight-bold">Get all Site</td>
                     <td>
                       <div class="input-group input-group-sm">
                         <div class="input-group-prepend">
@@ -314,14 +290,14 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Create Patient</td>
+                    <td class="font-weight-bold">Create Patient</td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
-                        </div>
+                        </div> -->
                         <input id="patientPrivateKey" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Private Key">
                       </div>
                     </td>
                     <td>
@@ -332,11 +308,11 @@
                     <td></td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
-                        </div>
+                        </div> -->
                         <input id="patientName" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Name">
                       </div>
                     </td>
                     <td>
@@ -346,11 +322,11 @@
                     <td></td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Gender</span>
-                        </div>
+                        </div> -->
                         <select class="custom-select" id="patientGender">
-                          <option value="0">Chọn...</option>
+                          <option value="0">Gender...</option>
                           <option id="gender-1" value="Male">Male</option>
                           <option id="gender-2" value="Female">Female</option>
                           <option id="gender-3" value="Other">Other</option>
@@ -365,67 +341,67 @@
                     <td></td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">DoB</span>
-                        </div>
+                        </div> -->
                         <input id="patientDateOfBirth" type="date" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
-                      </div>
-                    </td>
-                    <td>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>
-                      <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-sm">Address</span>
-                        </div>
-                        <input id="patientAddress" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
-                      </div>
-                    </td>
-                    <td>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>
-                      <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-sm">Phone Number</span>
-                        </div>
-                        <input id="patientPhone" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
-                      </div>
-                    </td>
-                    <td>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>
-                      <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-sm">Site ID</span>
-                        </div>
-                        <input id="patientSiteId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
-                      </div>
-                    </td>
-                    <td>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Get ID of Patient</td>
-                    <td>
-                      <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-sm">Phone Number</span>
-                        </div>
-                        <input id="getIdPhone" type="text" class="form-control" aria-label="Small" 
                               aria-describedby="inputGroup-sizing-sm">
+                      </div>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>
+                      <div class="input-group input-group-sm">
+                        <!-- <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm">Address</span>
+                        </div> -->
+                        <input id="patientAddress" type="text" class="form-control" aria-label="Small" 
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Address">
+                      </div>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>
+                      <div class="input-group input-group-sm">
+                        <!-- <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm">Phone Number</span>
+                        </div> -->
+                        <input id="patientPhone" type="text" class="form-control" aria-label="Small" 
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Phone Number">
+                      </div>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>
+                      <div class="input-group input-group-sm">
+                        <!-- <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm">Site ID</span>
+                        </div> -->
+                        <input id="patientSiteId" type="number" class="form-control" aria-label="Small" 
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Site ID">
+                      </div>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="font-weight-bold">Get ID of Patient</td>
+                    <td>
+                      <div class="input-group input-group-sm">
+                        <!-- <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm">Phone Number</span>
+                        </div> -->
+                        <input id="getIdPhone" type="text" class="form-control" aria-label="Small" 
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Phone Number">
                       </div>
                     </td>
                     <td>
@@ -433,14 +409,14 @@
                     </td>
                   </tr>
                   <tr>
-                    <td>Get data of Patient</td>
+                    <td class="font-weight-bold">Get data of Patient</td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Patient ID</span>
-                        </div>
+                        </div> -->
                         <input id="patientId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm">
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Patient ID">
                       </div>
                     </td>
                     <td>
@@ -457,14 +433,14 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Create Visit</td>
+                    <td class="font-weight-bold">Create Visit</td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
-                        </div>
+                        </div> -->
                         <input id="visitPrivateKey" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Private Key">
                       </div>
                     </td>
                     <td>
@@ -475,25 +451,25 @@
                     <td></td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Patient ID</span>
-                        </div>
+                        </div> -->
                         <input id="visitPatientId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Patient ID">
                       </div>
                     </td>
                     <td>
                     </td>
                   </tr>
                   <tr>
-                    <td>Get data of Visit</td>
+                    <td class="font-weight-bold">Get data of Visit</td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Visit ID</span>
-                        </div>
+                        </div> -->
                         <input id="visitId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Visit ID">
                       </div>
                     </td>
                     <td>
@@ -511,14 +487,14 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Create Test</td>
+                    <td class="font-weight-bold">Create Test</td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
-                        </div>
+                        </div> -->
                         <input id="testResultPrivateKey" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Private Key">
                       </div>
                     </td>
                     <td>
@@ -529,11 +505,11 @@
                     <td></td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Test Name</span>
-                        </div>
+                        </div> -->
                         <input id="testResultName" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Test Name">
                       </div>
                     </td>
                     <td>
@@ -543,11 +519,11 @@
                     <td></td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Test Result</span>
-                        </div>
+                        </div> -->
                         <input id="testResult" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Test Result">
                       </div>
                     </td>
                     <td>
@@ -557,25 +533,25 @@
                     <td></td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Visit ID</span>
-                        </div>
+                        </div> -->
                         <input id="testResultVisitId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Visit ID">
                       </div>
                     </td>
                     <td>
                     </td>
                   </tr>
                   <tr>
-                    <td>Get data of Test </td>
+                    <td class="font-weight-bold">Get data of Test </td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Test ID</span>
-                        </div>
+                        </div> -->
                         <input id="testResultId" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm">
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Test ID">
                       </div>
                     </td>
                     <td>
@@ -592,14 +568,14 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Create Prescription</td>
+                    <td class="font-weight-bold">Create Prescription</td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
-                        </div>
+                        </div> -->
                         <input id="prescriptionPrivateKey" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Private Key">
                       </div>
                     </td>
                     <td>
@@ -611,11 +587,11 @@
                     <td></td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">List Medicine ID</span>
-                        </div>
+                        </div> -->
                         <input id="prescriptionListId" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
+                              aria-describedby="inputGroup-sizing-sm" placeholder="List Medicine ID">
                       </div>
                     </td>
                     <td>
@@ -625,25 +601,25 @@
                     <td></td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Visit ID</span>
-                        </div>
+                        </div> -->
                         <input id="prescriptionVisitId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Visit ID">
                       </div>
                     </td>
                     <td>
                     </td>
                   </tr>
                   <tr>
-                    <td>Set paid Of Prescription</td>
+                    <td class="font-weight-bold">Set paid Of Prescription</td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
-                        </div>
+                        </div> -->
                         <input id="prescriptionPrivateKeySetPaid" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Private Key">
                       </div>
                     </td>
                     <td>
@@ -654,25 +630,25 @@
                     <td></td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Prescription ID</span>
-                        </div>
+                        </div> -->
                         <input id="prescriptionIdSetPaid" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Prescription ID">
                       </div>
                     </td>
                     <td>
                     </td>
                   </tr>
                   <tr>
-                    <td>Get Prescription Data</td>
+                    <td class="font-weight-bold">Get Prescription Data</td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Prescription ID</span>
-                        </div>
+                        </div> -->
                         <input id="prescriptionId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" >
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Prescription ID">
                       </div>
                     </td>
                     <td>
@@ -689,14 +665,14 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Create Medicine</td>
+                    <td class="font-weight-bold">Create Medicine</td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
-                        </div>
+                        </div> -->
                         <input id="medicinePrivateKeyCreate" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm">
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Private Key">
                       </div>
                     </td>
                     <td>
@@ -707,11 +683,11 @@
                     <td></td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Medicine name</span>
-                        </div>
+                        </div> -->
                         <input id="medicineNameCreate" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm">
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Medicine name">
                       </div>
                     </td>
                     <td>
@@ -721,25 +697,25 @@
                     <td></td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Amount</span>
-                        </div>
+                        </div> -->
                         <input id="medicineAmountCreate" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm">
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Amount">
                       </div>
                     </td>
                     <td>
                     </td>
                   </tr>
                   <tr>
-                    <td>Update Medicine</td>
+                    <td class="font-weight-bold">Update Medicine</td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
-                        </div>
+                        </div> -->
                         <input id="medicinePrivateKeyUpdate" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm">
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Private Key">
                       </div>
                     </td>
                     <td>
@@ -750,11 +726,11 @@
                     <td></td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Medicine ID</span>
-                        </div>
+                        </div> -->
                         <input id="medicineIdUpdate" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm">
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Medicine ID">
                       </div>
                     </td>
                     <td>
@@ -764,11 +740,11 @@
                     <td></td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Medicine Name</span>
-                        </div>
+                        </div> -->
                         <input id="medicineNameUpdate" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm">
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Medicine Name">
                       </div>
                     </td>
                     <td>
@@ -778,25 +754,25 @@
                     <td></td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Amount</span>
-                        </div>
+                        </div> -->
                         <input id="medicineAmountUpdate" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm">
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Amount">
                       </div>
                     </td>
                     <td>
                     </td>
                   </tr>
                   <tr>
-                    <td>Get Medicine History</td>
+                    <td class="font-weight-bold">Get Medicine History</td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Medicine ID</span>
-                        </div>
+                        </div> -->
                         <input id="medicineIDGetHistory" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm">
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Medicine ID">
                       </div>
                     </td>
                     <td>
@@ -804,14 +780,14 @@
                     </td>
                   </tr>
                   <tr>
-                    <td>Get Medicine Data</td>
+                    <td class="font-weight-bold">Get Medicine Data</td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
+                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Medicine ID</span>
-                        </div>
+                        </div> -->
                         <input id="medicineIDGet" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm">
+                              aria-describedby="inputGroup-sizing-sm" placeholder="Medicine ID">
                       </div>
                     </td>
                     <td>
@@ -852,35 +828,34 @@
   <script>
     // SITE
     const createSite = async () => {
-      const privateKey = $('#sitePrivateKey').val()
       const name = $('#siteName').val()
       const siteAddress = $('#siteAddress').val()
-      const data = await mintSite(privateKey, name, siteAddress)
+      const data = await mintSite( name, siteAddress)
+
       const keys = ['Site ID']
-      const values = Object.values(data.data)
+      const values = [getTokenId(data)]
       initResult(keys, values)
     }
 
     const getDataOfSite = async () => {
       const siteId = $('#siteId').val()
-      const data = await getSite(siteId)
+      const data = await getSiteSC(siteId)
       const keys = ["Name", "Patients of Site"]
 
-      const values = Object.values(data.data)
+      const values = [data[0], data[1]]
       initResult(keys, values)
     }
 
     const getAllSite = async () => {
-      const data = await getListAllSite();
-      
+      const data = await getAllSiteSC();
+      console.log(data);
       const keys = ['List Sites']
-      const values = [Object.values(data.data)]
+      const values = [data]
       initResult(keys, values)
     }
 
     // PATIENT
     const createPatient = async () => {
-      const privateKey = $('#patientPrivateKey').val()
       const name = $('#patientName').val()
       const gender = $('#patientGender').val()
       const dateOfBirth = $('#patientDateOfBirth').val()
@@ -888,95 +863,89 @@
       const phoneNumber = $('#patientPhone').val()
       const siteId = $('#patientSiteId').val()
 
-      const data = await mintPatient(privateKey, name, gender, dateOfBirth, patientAddress, phoneNumber, siteId);
+      const data = await mintPatient( name, gender, dateOfBirth, patientAddress, phoneNumber, siteId);
       const keys = ["Patient ID"]
 
-      const values = Object.values(data.data)
+      const values = [getTokenId(data)]
       initResult(keys, values)
     }
 
     const getIdOfPatient = async () => {
       const phoneNumber = $('#getIdPhone').val()
-      const data = await getIdPatient(phoneNumber)
+      const data = await getPatientFromPhoneSC(phoneNumber)
       const keys = ["Patient ID"]
-      const values = Object.values(data.data)
+      const values = [data]
       initResult(keys, values)
     }
 
     const getDataOfPatient = async () => {
       const patientId = $('#patientId').val()
-      const data = await getPatient(patientId)
-      const keys = Object.keys(data.data)
-      const values = Object.values(data.data)
+      const data = await getPatientSC(patientId)
 
       const info_keys = ["Patient's name", "Patient's gender", "Patient's DoB", "Patient's address", "Patient's phone", "Time Created", "Last Modified"]
-      const info_values = Object.values(data.data)[0]
+      let info_values = [...data[0]]
       info_values[5] = new Date(info_values[5] * 1000)
       info_values[6] = new Date(info_values[6] * 1000)
 
       const list_keys = ["List of Visit ID"]
-      const list_values = [Object.values(data.data)[1]]
+      const list_values = [...data[1]]
       initResult(info_keys.concat(list_keys), info_values.concat(list_values))
     }
 
     // VISIT
     const createVisit = async () => {
-      const privateKey = $('#visitPrivateKey').val()
       const patientId = $('#visitPatientId').val()
-      const data = await mintVisit(privateKey, patientId)
+      const data = await mintVisit(patientId)
       const keys = ["Visit ID"]
-      const values = Object.values(data.data)
+      const values = [getTokenId(data)]
       initResult(keys, values)
     }
 
     const getDataOfVisit = async () => {
       const patientId = $('#visitId').val()
-      const data = await getVisit(patientId)
+      const data = await getVisitSC(patientId)
       const keys = ["Time created", "Prescription ID", "List Test Result"]
-      const values = Object.values(data.data)
+      let values = data
       values[0] = new Date(values[0] * 1000)
       initResult(keys, values)
     }
 
     // TEST RESULT
     const createTest = async () => {
-      const privateKey = $('#testResultPrivateKey').val()
       const name = $('#testResultName').val()
       const result = $('#testResult').val()
       const visitId = $('#testResultVisitId').val()
-      const data = await mintTestResult(privateKey, name, result, visitId)
+      const data = await mintTestResult(name, result, visitId)
       const keys = ["Test ID"]
-      const values = Object.values(data.data)
+      const values = [getTokenId(data)]
       initResult(keys, values)
     }
 
     const getDataOfTest = async () => {
       const testId = $('#testResultId').val()
-      const data = await getTestResult(testId)
+      const data = await getTestResultSC(testId)
       const keys = ["Test", "Result", "Time created"]
-      const values = Object.values(data.data)
+      let values = data
       values[2] = new Date(values[2] * 1000)
       initResult(keys, values)
     }
 
     //  PRESCRIPTION
     const createPrescription = async () => {
-      const privateKey = $('#prescriptionPrivateKey').val()
       const listIdStr = $('#prescriptionListId').val()
       const listId = listIdStr.split(',').map((item) => {
         return Number(item)
       })
       const visitId = $('#prescriptionVisitId').val()
-      const data = await mintPrescription(privateKey, listId, visitId)
+      const data = await mintPrescription( listId, visitId)
       const keys = ["Prescription ID"]
-      const values = [data.data]
+      const values = [getTokenId(data)]
       initResult(keys, values)
     }
 
     const setPaidOfPrescription = async () => {
-      const privateKey = $('#prescriptionPrivateKeySetPaid').val()
       const prescriptionId = $('#prescriptionIdSetPaid').val()
-      const data = await setPaidPrescription(privateKey, prescriptionId )
+      const data = await setPaidPrescriptionSC(prescriptionId )
       const keys = ["Pay"]
       const values = ["Done"]
       initResult(keys, values)
@@ -984,10 +953,10 @@
 
     const getPrescriptionData = async () => {
       const prescriptionId = $('#prescriptionId').val()
-      const data = await getPrescription( prescriptionId )
+      const data = await getPrescriptionSC( prescriptionId )
       const keys = ["Paid Status", "Time Created", "List Medicine"]
       // const info_keys = 
-      let values = Object.values(data.data)
+      let values = data
       values = values[0].concat([values[1]])
       values[1] = new Date(values[1]*1000)
       initResult(keys, values)
@@ -995,21 +964,19 @@
 
     // MEDICINE
     const createMedicine = async () => {
-      const privateKey = $('#medicinePrivateKeyCreate').val()
       const name = $('#medicineNameCreate').val()
       const amount = $('#medicineAmountCreate').val()
-      const data = await mintMedicine( privateKey, name, amount )
+      const data = await mintMedicine(name, amount )
       const keys = ["Medicine ID"]
-      const values = [data.data]
+      const values = [getTokenId(data)]
       initResult(keys, values)
     }
 
     const updateMedicine = async () => {
-      const privateKey = $('#medicinePrivateKeyUpdate').val()
       const medicineId = $('#medicineIdUpdate').val()
       const name = $('#medicineNameUpdate').val()
       const amount = $('#medicineAmountUpdate').val()
-      const data = await updateMedicineRequest( privateKey, medicineId, name, amount )
+      const data = await updateMedicineSC(medicineId, name, amount )
       const keys = ["Update Medicine"]
       const values = ["Done"]
       initResult(keys, values)
@@ -1017,32 +984,44 @@
 
     const getMedicineHistory = async () => {
       const medicineId = $('#medicineIDGetHistory').val()
-      const data = await getHistoryMedicine(medicineId)
+      const data = await getMedicineHistorySC(medicineId)
       const keys = ["History changes"]
-      const values = [Object.values(data.data)]
+      const values = [data]
       initResult(keys, values)
     }
 
     const getMedicineData = async () => {
       const medicineId = $('#medicineIDGet').val()
-      const data = await getMedicine(medicineId)
+      const data = await getMedicineSC(medicineId)
       const keys = ["Name", "Amount"]
-      const values = Object.values(data.data)
+      const values = data
       
       initResult(keys, values)
     }
 
     // AUTHENTICATOR
-    const getUserRole = async (userAddress) => {
-      const myJson = await $.get(`http://localhost:8088/api/authenticator/CheckAuth/?userAddress=${userAddress}`)
-      return(myJson);
-    }
+    // const getUserRole = async (userAddress) => {
+    //   const myJson = await $.get(`http://localhost:8088/api/authenticator/CheckAuth/?userAddress=${userAddress}`)
+    //   return(myJson);
+    // }
 
-    const userAddress = window.location.search.split('?address=')[1];
-    getUserRole(userAddress).then((data) => {
-      alert(JSON.stringify(data))
-    });
     
+    // getUserRole(userAddress).then((data) => {
+    //   alert(JSON.stringify(data))
+    // });
+    const redirect = async () => {
+      window.location = `./index.html`;
+    };
+    const checkRole = async () => {
+      const userAddress = window.location.search.split('?address=')[1];
+      const accounts = await getCurrentAccounts()
+      if (userAddress != accounts[0]){
+        alert("Hacker found!")
+        redirect();
+
+      }
+    }
+    checkRole().then();
 
     let totalRows = 0;
     const clearText = () => {
@@ -1066,6 +1045,9 @@
 
     };
 
+    const getTokenId = (Tx) => {
+      return Tx.events.Transfer.returnValues["tokenId"];
+    }
     
   </script>
 
