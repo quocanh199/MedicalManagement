@@ -7,6 +7,10 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link
+      href="https://www.moh.gov.vn/byt-theme/images/favicon.ico"
+      rel="Shortcut Icon"
+    />
   </head>
   <body>
     <!-- Section: Design Block -->
@@ -136,7 +140,8 @@
     const userWallet = document.querySelector("#userWallet");
 
     const redirect = async (address) => {
-      window.location = `./application.html?address=${address}`;
+      // window.location = `./application.html?address=${address}`;
+      window.location = `./application.html`;
     };
 
     ethereumButton.addEventListener("click", async () => {

@@ -2,21 +2,42 @@
 <html>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script type='text/javascript' src="script.js"></script>
-    <script type='text/javascript' src="web3.min.js" ></script>
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"       
-    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-    <link href="https://www.moh.gov.vn/byt-theme/images/favicon.ico" rel="Shortcut Icon"> 
-    <link class="lfr-css-file" href="https://www.moh.gov.vn/byt-theme/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1614932945203" rel="stylesheet" type="text/css"> 
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="web3.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://www.moh.gov.vn/byt-theme/images/favicon.ico"
+      rel="Shortcut Icon"
+    />
+    <link
+      class="lfr-css-file"
+      href="https://www.moh.gov.vn/byt-theme/css/main.css?browserId=other&amp;themeId=byt_WAR_byttheme&amp;languageId=vi_VN&amp;b=6205&amp;t=1614932945203"
+      rel="stylesheet"
+      type="text/css"
+    />
     <title>Med Man</title>
   </head>
   <head>
-    <title>Trang chủ - Cổng thông tin Bộ Y tế</title>   
+    <title>Trang chủ - Cổng thông tin Bộ Y tế</title>
   </head>
   <body>
     <style>
@@ -51,157 +72,170 @@
         background-repeat: no-repeat;
       }
       .background-radial-gradient {
-          background-color: hsl(219, 41%, 35%);
-          background-image: radial-gradient(
-              650px circle at 0% 0%,
-              hsl(219, 45%, 41%) 15%,
-              hsl(218, 35%, 48%) 35%,
-              hsl(219, 45%, 36%) 75%,
-              hsl(218, 66%, 29%) 80%,
-              transparent 100%
-            ),
-            radial-gradient(
-              1250px circle at 100% 100%,
-              hsl(218, 57%, 50%) 15%,
-              hsl(218, 40%, 44%) 35%,
-              hsl(219, 39%, 30%) 75%,
-              hsl(218, 29%, 45%) 80%,
-              transparent 100%
-            );
-          /* height: 100vh; */
-          background-image: repeating-radial-gradient()
-        }
+        background-color: hsl(219, 41%, 35%);
+        background-image: radial-gradient(
+            650px circle at 0% 0%,
+            hsl(219, 45%, 41%) 15%,
+            hsl(218, 35%, 48%) 35%,
+            hsl(219, 45%, 36%) 75%,
+            hsl(218, 66%, 29%) 80%,
+            transparent 100%
+          ),
+          radial-gradient(
+            1250px circle at 100% 100%,
+            hsl(218, 57%, 50%) 15%,
+            hsl(218, 40%, 44%) 35%,
+            hsl(219, 39%, 30%) 75%,
+            hsl(218, 29%, 45%) 80%,
+            transparent 100%
+          );
+        min-height: 100vh;
+        background-image: repeating-radial-gradient();
+      }
 
-        #radius-shape-1 {
-          height: 220px;
-          width: 220px;
-          top: -60px;
-          left: -130px;
-          background: radial-gradient(#44006b, #ad1fff);
-          overflow: hidden;
-        }
+      #radius-shape-1 {
+        height: 220px;
+        width: 220px;
+        top: -60px;
+        left: -130px;
+        background: radial-gradient(#44006b, #ad1fff);
+        overflow: hidden;
+      }
 
-        #radius-shape-2 {
-          border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-          bottom: -60px;
-          right: -110px;
-          width: 300px;
-          height: 300px;
-          background: radial-gradient(#44006b, #ad1fff);
-          overflow: hidden;
-        }
+      #radius-shape-2 {
+        border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+        bottom: -60px;
+        right: -110px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(#44006b, #ad1fff);
+        overflow: hidden;
+      }
 
-        .bg-glass {
-          background-color: hsla(0, 0%, 90%, 0.7) !important;
-          backdrop-filter: saturate(200%) blur(25px);
-          border-radius: 0.25rem;
-          padding-bottom: 5px;
-        }
+      .bg-glass {
+        background-color: hsla(0, 0%, 90%, 0.7) !important;
+        backdrop-filter: saturate(200%) blur(25px);
+        border-radius: 0.25rem;
+        padding-bottom: 5px;
+        box-shadow: 0 6px 6px 0, 0 6px 20px 0;
+        /* text-shadow: 10px; */
+      }
 
-        .center-btn {
-          margin: 0;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-        }
+      .center-btn {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
 
-        .row {
-          height: 60vh;
-        }
-        #header-wrap{
-          border-radius:0.25rem 
-        }
-
+      .row {
+        height: 60vh;
+      }
+      #header-wrap {
+        border-radius: 0.25rem;
+      }
     </style>
-    <div class="background-radial-gradient pt-5">
+    <div class="background-radial-gradient pt-5 pb-3">
       <div class="container bg-glass pt-3 mb-3">
-        <div class="bg-header " tabindex="0"></div>
-        <header id="header" class="mb-3" role="banner" > 
-          <div id="header-wrap"  > 
-            <div class="container"> 
-              <!--Navigation Resposnive Trigger--> 
-              <div id="mainMenu-trigger"> 
-                <button id="mainMenu-trigger-button" class="lines-button x"> 
+        <div class="bg-header" tabindex="0"></div>
+        <header id="header" class="mb-3" role="banner">
+          <div id="header-wrap">
+            <div class="container">
+              <!--Navigation Resposnive Trigger-->
+              <div id="mainMenu-trigger">
+                <button id="mainMenu-trigger-button" class="lines-button x">
                   <span class="icon-reorder"></span>
-                </button> 
-                <div class="header-extras lang"> 
-                  <span>Ngôn ngữ:</span> 
-                  <a href="/en_US/web/ministry-of-health" class="" title="English">EN</a>&nbsp;|&nbsp;
-                  <a href="/vi_VN" title="Tiếng Việt" class="">VI</a> 
-                </div> 
-              </div> 
-              <!--end: Navigation Resposnive Trigger--> <!--Navigation--> 
-              <div id="mainMenu" class="light"> 
-                <div class="container"> 
-                  <nav class="sort-pages modify-pages" id="navigation" role="navigation"> 
-                    <ul aria-label="Các trang" role="menubar"> 
-                      <li class="selected" id="layout_1" aria-selected="true" role="presentation"> 
-                        <a class="active" href="https://www.moh.gov.vn/web/guest/home">
-                          <span class="uppercase"> Trang chủ</span>
-                        </a> 
-                      </li> 
-                      <li class="dropdown" id="layout_11" role="presentation"> 
-                        <a class="" href="https://www.moh.gov.vn/web/guest/gioi-thieu">
-                          <span class="uppercase"> Giới thiệu</span>
-                        </a> 
-                        <ul class="dropdown-menu child-menu" role="menu"> 
-                          <li class="false"> 
-                            <a aria-labelledby="layout_73" href="https://www.moh.gov.vn/web/guest/bieu-tuong-cua-bo-y-te">Biểu tượng của Bộ Y tế</a> 
-                          </li> 
-                          <li class="false"> 
-                            <a aria-labelledby="layout_75" href="https://www.moh.gov.vn/web/guest/lanh-dao-duong-nhiem">Lãnh đạo đương nhiệm</a> 
-                          </li> 
-                          <li class="false"> 
-                            <a aria-labelledby="layout_76" href="https://www.moh.gov.vn/web/guest/lanh-dao-qua-cac-thoi-ky">Lãnh đạo qua các thời kỳ</a> 
-                          </li> 
-                          <li class="false"> 
-                            <a aria-labelledby="layout_77" href="https://www.moh.gov.vn/web/guest/chuc-nang-nhiem-vu-quyen-han-cua-bo-y-te">Chức năng, nhiệm vụ, quyền hạn của Bộ Y tế</a> 
-                          </li> 
-                          <li class="false"> 
-                            <a aria-labelledby="layout_78" href="https://www.moh.gov.vn/web/guest/co-cau-to-chuc">Cơ cấu tổ chức</a> 
-                          </li> 
-                          <li class="false"> 
-                            <a aria-labelledby="layout_79" href="https://www.moh.gov.vn/web/guest/thong-tin-lien-he">Thông tin liên hệ</a>
-                          </li> 
-                        </ul> 
-                      </li> 
-                      <li class="" id="layout_12" role="presentation"> 
-                        <a class="" href="https://www.moh.gov.vn/web/guest/so-o-trang">
-                          <span class="uppercase"> Sơ đồ trang</span>
+                </button>
+                <div class="header-extras lang">
+                  <span>Ngôn ngữ:</span>
+                  <a
+                    href="/en_US/web/ministry-of-health"
+                    class=""
+                    title="English"
+                    >EN</a
+                  >&nbsp;|&nbsp;
+                  <a href="/vi_VN" title="Tiếng Việt" class="">VI</a>
+                </div>
+              </div>
+              <!--end: Navigation Resposnive Trigger-->
+              <!--Navigation-->
+              <div id="mainMenu" class="light">
+                <div class="container">
+                  <nav
+                    class="sort-pages modify-pages"
+                    id="navigation"
+                    role="navigation"
+                  >
+                    <ul aria-label="Các trang" role="menubar">
+                      <li
+                        class="selected"
+                        id="layout_1"
+                        aria-selected="true"
+                        role="presentation"
+                      >
+                        <a class="active" href="#" onclick="showSiteTable();">
+                          <span class="uppercase"> Site</span>
                         </a>
-                      </li> 
-                      <li class="" id="layout_14" role="presentation"> 
-                        <a class="" href="https://mail.moh.gov.vn">
-                          <span class="uppercase"> Thư điện tử</span>
-                        </a> 
-                      </li> 
-                      <li class="" id="layout_15" role="presentation"> 
-                        <a class="" href="https://emoh.moh.gov.vn">
-                          <span class="uppercase"> QUẢN LÝ VĂN BẢN ĐIỆN TỬ</span>
-                        </a> 
-                      </li> 
-                    </ul> 
-                  </nav> 
-                  <div class="header-extras lang"> 
-                    <span>Ngôn ngữ:</span> 
-                    <a href="/en_US/web/ministry-of-health" class="" title="English">EN</a>&nbsp;|&nbsp;<a href="/vi_VN" title="Tiếng Việt" class="">VI</a> 
-                  </div> 
-                </div> 
-              </div> 
-              <!--end: Navigation--> 
-            </div> 
-          </div> 
-          <!-- <a data-redirect="false" href="https://www.moh.gov.vn/c/portal/login?p_l_id=20185" id="sign-in" rel="nofollow">Đăng nhập</a> --> 
+                      </li>
+
+                      <li class="" id="layout_12" role="presentation">
+                        <a class="" href="#" onclick="showPatientTable();">
+                          <span class="uppercase">Patient</span>
+                        </a>
+                      </li>
+
+                      <li class="" id="layout_14" role="presentation">
+                        <a class="" href="#" onclick="showVisitTable();">
+                          <span class="uppercase"> Visit</span>
+                        </a>
+                      </li>
+
+                      <li class="" id="layout_15" role="presentation">
+                        <a class="" href="#" onclick="showTestResultTable();">
+                          <span class="uppercase"> Test Result</span>
+                        </a>
+                      </li>
+                      <li class="" id="layout_15" role="presentation">
+                        <a class="" href="#" onclick="showPrescriptionTable();">
+                          <span class="uppercase"> Prescription</span>
+                        </a>
+                      </li>
+                      <li class="" id="layout_15" role="presentation">
+                        <a class="" href="#" onclick="showMedicineTable();">
+                          <span class="uppercase"> Medicine</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <div class="header-extras lang">
+                    <a
+                      href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                      class=""
+                      title="Do it!"
+                      >Magical touch</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <!--end: Navigation-->
+            </div>
+          </div>
+          <!-- <a data-redirect="false" href="https://www.moh.gov.vn/c/portal/login?p_l_id=20185" id="sign-in" rel="nofollow">Đăng nhập</a> -->
         </header>
-        <table class="table table-borderless bg-white" style="border-radius:0.25rem ">
+        <table
+          class="table table-borderless bg-white"
+          style="border-radius: 0.25rem"
+        >
           <tr>
             <td>
-              <table class="table">
+              <table class="table site-table">
                 <thead class="text-black">
                   <tr>
-                    <th colspan="3" class="my-center"><h3 class="font-weight-bold">SITE</h3></th>
+                    <th colspan="3" class="my-center">
+                      <h3 class="font-weight-bold">SITE</h3>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -212,12 +246,24 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
                         </div> -->
-                        <input id="sitePrivateKey" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Private Key">
+                        <input
+                          id="siteName"
+                          type="text"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Site's name"
+                        />
                       </div>
                     </td>
                     <td>
-                      <button onclick="createSite()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
+                      <button
+                        onclick="createSite()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
                   <tr>
@@ -227,29 +273,21 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Site's name</span>
                         </div> -->
-                        <input id="siteName" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Site's name">
+                        <input
+                          id="siteAddress"
+                          type="text"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Site's address"
+                        />
                       </div>
                     </td>
                     <td>
                       <!-- empty td -->
                     </td>
                   </tr>
-                  <tr>
-                    <td></td>
-                    <td>
-                      <div class="input-group input-group-sm">
-                        <!-- <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-sm">Site's address</span>
-                        </div> -->
-                        <input id="siteAddress" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Site's address">
-                      </div>
-                    </td>
-                    <td>
-                      <!-- empty td -->
-                    </td>
-                  </tr>
+
                   <tr>
                     <td class="font-weight-bold">Get data of Site</td>
                     <td>
@@ -257,12 +295,24 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Site ID</span>
                         </div> -->
-                        <input id="siteId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Site ID">
+                        <input
+                          id="siteId"
+                          type="number"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Site ID"
+                        />
                       </div>
                     </td>
                     <td>
-                      <button onclick="getDataOfSite()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
+                      <button
+                        onclick="getDataOfSite()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
                   <tr>
@@ -277,15 +327,23 @@
                       </div>
                     </td>
                     <td>
-                      <button onclick="getAllSite()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
+                      <button
+                        onclick="getAllSite()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <table class="table">
+              <table class="table patient-table">
                 <thead class="text-black">
                   <tr>
-                    <th colspan="3" class="my-center"><h3 class="font-weight-bold">PATIENT</h3></th>
+                    <th colspan="3" class="my-center">
+                      <h3 class="font-weight-bold">PATIENT</h3>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -294,29 +352,28 @@
                     <td>
                       <div class="input-group input-group-sm">
                         <!-- <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
-                        </div> -->
-                        <input id="patientPrivateKey" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Private Key">
-                      </div>
-                    </td>
-                    <td>
-                      <button onclick="createPatient()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>
-                      <div class="input-group input-group-sm">
-                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
                         </div> -->
-                        <input id="patientName" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Name">
+                        <input
+                          id="patientName"
+                          type="text"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Name"
+                        />
                       </div>
                     </td>
                     <td>
+                      <button
+                        onclick="createPatient()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td></td>
@@ -331,11 +388,9 @@
                           <option id="gender-2" value="Female">Female</option>
                           <option id="gender-3" value="Other">Other</option>
                         </select>
-                        
                       </div>
                     </td>
-                    <td>
-                    </td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td></td>
@@ -344,12 +399,16 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">DoB</span>
                         </div> -->
-                        <input id="patientDateOfBirth" type="date" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm">
+                        <input
+                          id="patientDateOfBirth"
+                          type="date"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                        />
                       </div>
                     </td>
-                    <td>
-                    </td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td></td>
@@ -358,12 +417,17 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Address</span>
                         </div> -->
-                        <input id="patientAddress" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Address">
+                        <input
+                          id="patientAddress"
+                          type="text"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Address"
+                        />
                       </div>
                     </td>
-                    <td>
-                    </td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td></td>
@@ -372,12 +436,17 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Phone Number</span>
                         </div> -->
-                        <input id="patientPhone" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Phone Number">
+                        <input
+                          id="patientPhone"
+                          type="text"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Phone Number"
+                        />
                       </div>
                     </td>
-                    <td>
-                    </td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td></td>
@@ -386,12 +455,17 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Site ID</span>
                         </div> -->
-                        <input id="patientSiteId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Site ID">
+                        <input
+                          id="patientSiteId"
+                          type="number"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Site ID"
+                        />
                       </div>
                     </td>
-                    <td>
-                    </td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td class="font-weight-bold">Get ID of Patient</td>
@@ -400,12 +474,24 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Phone Number</span>
                         </div> -->
-                        <input id="getIdPhone" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Phone Number">
+                        <input
+                          id="getIdPhone"
+                          type="text"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Phone Number"
+                        />
                       </div>
                     </td>
                     <td>
-                      <button onclick="getIdOfPatient()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
+                      <button
+                        onclick="getIdOfPatient()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
                   <tr>
@@ -415,20 +501,34 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Patient ID</span>
                         </div> -->
-                        <input id="patientId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Patient ID">
+                        <input
+                          id="patientId"
+                          type="number"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Patient ID"
+                        />
                       </div>
                     </td>
                     <td>
-                      <button onclick="getDataOfPatient()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
+                      <button
+                        onclick="getDataOfPatient()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <table class="table">
+              <table class="table visit-table">
                 <thead class="text-black">
                   <tr>
-                    <th colspan="3" class="my-center"><h3 class="font-weight-bold">VISIT</h3></th>
+                    <th colspan="3" class="my-center">
+                      <h3 class="font-weight-bold">VISIT</h3>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -436,29 +536,24 @@
                     <td class="font-weight-bold">Create Visit</td>
                     <td>
                       <div class="input-group input-group-sm">
-                        <!-- <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
-                        </div> -->
-                        <input id="visitPrivateKey" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Private Key">
+                        <input
+                          id="visitPatientId"
+                          type="number"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Patient ID"
+                        />
                       </div>
                     </td>
                     <td>
-                      <button onclick="createVisit()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>
-                      <div class="input-group input-group-sm">
-                        <!-- <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-sm">Patient ID</span>
-                        </div> -->
-                        <input id="visitPatientId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Patient ID">
-                      </div>
-                    </td>
-                    <td>
+                      <button
+                        onclick="createVisit()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
                   <tr>
@@ -468,21 +563,34 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Visit ID</span>
                         </div> -->
-                        <input id="visitId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Visit ID">
+                        <input
+                          id="visitId"
+                          type="number"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Visit ID"
+                        />
                       </div>
                     </td>
                     <td>
-                      <button onclick="getDataOfVisit()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
+                      <button
+                        onclick="getDataOfVisit()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
-                
                 </tbody>
               </table>
-              <table class="table">
+              <table class="table test-result-table">
                 <thead class="text-black">
                   <tr>
-                    <th colspan="3" class="my-center"><h3 class="font-weight-bold">TEST RESULT</h3></th>
+                    <th colspan="3" class="my-center">
+                      <h3 class="font-weight-bold">TEST RESULT</h3>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -491,28 +599,26 @@
                     <td>
                       <div class="input-group input-group-sm">
                         <!-- <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
-                        </div> -->
-                        <input id="testResultPrivateKey" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Private Key">
-                      </div>
-                    </td>
-                    <td>
-                      <button onclick="createTest()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>
-                      <div class="input-group input-group-sm">
-                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Test Name</span>
                         </div> -->
-                        <input id="testResultName" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Test Name">
+                        <input
+                          id="testResultName"
+                          type="text"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Test Name"
+                        />
                       </div>
                     </td>
                     <td>
+                      <button
+                        onclick="createTest()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
                   <tr>
@@ -522,12 +628,17 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Test Result</span>
                         </div> -->
-                        <input id="testResult" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Test Result">
+                        <input
+                          id="testResult"
+                          type="text"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Test Result"
+                        />
                       </div>
                     </td>
-                    <td>
-                    </td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td></td>
@@ -536,65 +647,82 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Visit ID</span>
                         </div> -->
-                        <input id="testResultVisitId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Visit ID">
+                        <input
+                          id="testResultVisitId"
+                          type="number"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Visit ID"
+                        />
                       </div>
                     </td>
-                    <td>
-                    </td>
+                    <td></td>
                   </tr>
                   <tr>
-                    <td class="font-weight-bold">Get data of Test </td>
+                    <td class="font-weight-bold">Get data of Test</td>
                     <td>
                       <div class="input-group input-group-sm">
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Test ID</span>
                         </div> -->
-                        <input id="testResultId" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Test ID">
+                        <input
+                          id="testResultId"
+                          type="text"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Test ID"
+                        />
                       </div>
                     </td>
                     <td>
-                      <button onclick="getDataOfTest()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
+                      <button
+                        onclick="getDataOfTest()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <table class="table">
+              <table class="table prescription-table">
                 <thead class="text-black">
                   <tr>
-                    <th colspan="3" class="my-center"><h3 class="font-weight-bold">PRESCRIPTION</h3></th>
+                    <th colspan="3" class="my-center">
+                      <h3 class="font-weight-bold">PRESCRIPTION</h3>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td class="font-weight-bold">Create Prescription</td>
-                    <td>
-                      <div class="input-group input-group-sm">
-                        <!-- <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
-                        </div> -->
-                        <input id="prescriptionPrivateKey" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Private Key">
-                      </div>
-                    </td>
-                    <td>
-                      <button onclick="createPrescription()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
-                    </td>
-                  </tr>
-                  
-                  <tr>
-                    <td></td>
+
                     <td>
                       <div class="input-group input-group-sm">
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">List Medicine ID</span>
                         </div> -->
-                        <input id="prescriptionListId" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="List Medicine ID">
+                        <input
+                          id="prescriptionListId"
+                          type="text"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="List Medicine ID"
+                        />
                       </div>
                     </td>
                     <td>
+                      <button
+                        onclick="createPrescription()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
                   <tr>
@@ -604,40 +732,44 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Visit ID</span>
                         </div> -->
-                        <input id="prescriptionVisitId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Visit ID">
+                        <input
+                          id="prescriptionVisitId"
+                          type="number"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Visit ID"
+                        />
                       </div>
                     </td>
-                    <td>
-                    </td>
+                    <td></td>
                   </tr>
+
                   <tr>
                     <td class="font-weight-bold">Set paid Of Prescription</td>
                     <td>
                       <div class="input-group input-group-sm">
                         <!-- <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
-                        </div> -->
-                        <input id="prescriptionPrivateKeySetPaid" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Private Key">
-                      </div>
-                    </td>
-                    <td>
-                      <button onclick="setPaidOfPrescription()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>
-                      <div class="input-group input-group-sm">
-                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Prescription ID</span>
                         </div> -->
-                        <input id="prescriptionIdSetPaid" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Prescription ID">
+                        <input
+                          id="prescriptionIdSetPaid"
+                          type="number"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Prescription ID"
+                        />
                       </div>
                     </td>
                     <td>
+                      <button
+                        onclick="setPaidOfPrescription()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
                   <tr>
@@ -647,50 +779,63 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Prescription ID</span>
                         </div> -->
-                        <input id="prescriptionId" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Prescription ID">
+                        <input
+                          id="prescriptionId"
+                          type="number"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Prescription ID"
+                        />
                       </div>
                     </td>
                     <td>
-                      <button onclick="getPrescriptionData()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
+                      <button
+                        onclick="getPrescriptionData()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <table class="table">
+              <table class="table medicine-table">
                 <thead class="text-black">
                   <tr>
-                    <th colspan="3" class="my-center"><h3 class="font-weight-bold">MEDICINE</h3></th>
+                    <th colspan="3" class="my-center">
+                      <h3 class="font-weight-bold">MEDICINE</h3>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td class="font-weight-bold">Create Medicine</td>
-                    <td>
-                      <div class="input-group input-group-sm">
-                        <!-- <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
-                        </div> -->
-                        <input id="medicinePrivateKeyCreate" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Private Key">
-                      </div>
-                    </td>
-                    <td>
-                      <button onclick="createMedicine()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
+
                     <td>
                       <div class="input-group input-group-sm">
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Medicine name</span>
                         </div> -->
-                        <input id="medicineNameCreate" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Medicine name">
+                        <input
+                          id="medicineNameCreate"
+                          type="text"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Medicine name"
+                        />
                       </div>
                     </td>
                     <td>
+                      <button
+                        onclick="createMedicine()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
                   <tr>
@@ -700,40 +845,44 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Amount</span>
                         </div> -->
-                        <input id="medicineAmountCreate" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Amount">
+                        <input
+                          id="medicineAmountCreate"
+                          type="number"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Amount"
+                        />
                       </div>
                     </td>
-                    <td>
-                    </td>
+                    <td></td>
                   </tr>
+
                   <tr>
                     <td class="font-weight-bold">Update Medicine</td>
                     <td>
                       <div class="input-group input-group-sm">
                         <!-- <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroup-sizing-sm">Private Key</span>
-                        </div> -->
-                        <input id="medicinePrivateKeyUpdate" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Private Key">
-                      </div>
-                    </td>
-                    <td>
-                      <button onclick="updateMedicine()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>
-                      <div class="input-group input-group-sm">
-                        <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Medicine ID</span>
                         </div> -->
-                        <input id="medicineIdUpdate" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Medicine ID">
+                        <input
+                          id="medicineIdUpdate"
+                          type="number"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Medicine ID"
+                        />
                       </div>
                     </td>
                     <td>
+                      <button
+                        onclick="updateMedicine()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
                   <tr>
@@ -743,11 +892,15 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Medicine Name</span>
                         </div> -->
-                        <input id="medicineNameUpdate" type="text" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Medicine Name">
+                        <input
+                          id="medicineNameUpdate"
+                          type="text"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Medicine Name"
+                        />
                       </div>
-                    </td>
-                    <td>
                     </td>
                   </tr>
                   <tr>
@@ -757,12 +910,17 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Amount</span>
                         </div> -->
-                        <input id="medicineAmountUpdate" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Amount">
+                        <input
+                          id="medicineAmountUpdate"
+                          type="number"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Amount"
+                        />
                       </div>
                     </td>
-                    <td>
-                    </td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td class="font-weight-bold">Get Medicine History</td>
@@ -771,12 +929,24 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Medicine ID</span>
                         </div> -->
-                        <input id="medicineIDGetHistory" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Medicine ID">
+                        <input
+                          id="medicineIDGetHistory"
+                          type="number"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Medicine ID"
+                        />
                       </div>
                     </td>
                     <td>
-                      <button onclick="getMedicineHistory()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
+                      <button
+                        onclick="getMedicineHistory()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
                   <tr>
@@ -786,28 +956,46 @@
                         <!-- <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroup-sizing-sm">Medicine ID</span>
                         </div> -->
-                        <input id="medicineIDGet" type="number" class="form-control" aria-label="Small" 
-                              aria-describedby="inputGroup-sizing-sm" placeholder="Medicine ID">
+                        <input
+                          id="medicineIDGet"
+                          type="number"
+                          class="form-control"
+                          aria-label="Small"
+                          aria-describedby="inputGroup-sizing-sm"
+                          placeholder="Medicine ID"
+                        />
                       </div>
                     </td>
                     <td>
-                      <button onclick="getMedicineData()" type="submit" class="btn btn-info btn-sm my-submit-btn">Submit</button>
+                      <button
+                        onclick="getMedicineData()"
+                        type="submit"
+                        class="btn btn-info btn-sm my-submit-btn"
+                      >
+                        Submit
+                      </button>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </td>
             <td>
-              <table id="result-p" class="table ">
+              <table id="result-p" class="table">
                 <thead class="text-black">
+                  <tr></tr>
                   <tr>
-                    <tr>
-                      <th class="my-center">
-                        <h3 class="font-weight-bold">KẾT QUẢ
-                          <button onclick="clearText()" type="submit" class="btn my-btn"><ion-icon name="backspace"></ion-icon></button>
-                        </h3>
-                      </th>
-                    </tr>
+                    <th class="my-center">
+                      <h3 class="font-weight-bold">
+                        RESULT
+                        <button
+                          onclick="clearText()"
+                          type="submit"
+                          class="btn my-btn"
+                        >
+                          <ion-icon name="backspace"></ion-icon>
+                        </button>
+                      </h3>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -819,185 +1007,198 @@
             </td>
           </tr>
         </table>
-  
       </div>
     </div>
-    
   </body>
 
   <script>
     // SITE
     const createSite = async () => {
-      const name = $('#siteName').val()
-      const siteAddress = $('#siteAddress').val()
-      const data = await mintSite( name, siteAddress)
+      const name = $("#siteName").val();
+      const siteAddress = $("#siteAddress").val();
+      const data = await mintSite(name, siteAddress);
 
-      const keys = ['Site ID']
-      const values = [getTokenId(data)]
-      initResult(keys, values)
-    }
+      const keys = ["Site ID"];
+      const values = [getTokenId(data)];
+      initResult(keys, values);
+    };
 
     const getDataOfSite = async () => {
-      const siteId = $('#siteId').val()
-      const data = await getSiteSC(siteId)
-      const keys = ["Name", "Patients of Site"]
+      const siteId = $("#siteId").val();
+      const data = await getSiteSC(siteId);
+      const keys = ["Name", "Patients of Site"];
 
-      const values = [data[0], data[1]]
-      initResult(keys, values)
-    }
+      const values = [data[0], data[1]];
+      initResult(keys, values);
+    };
 
     const getAllSite = async () => {
       const data = await getAllSiteSC();
       console.log(data);
-      const keys = ['List Sites']
-      const values = [data]
-      initResult(keys, values)
-    }
+      const keys = ["List Sites"];
+      const values = [data];
+      initResult(keys, values);
+    };
 
     // PATIENT
     const createPatient = async () => {
-      const name = $('#patientName').val()
-      const gender = $('#patientGender').val()
-      const dateOfBirth = $('#patientDateOfBirth').val()
-      const patientAddress = $('#patientAddress').val()
-      const phoneNumber = $('#patientPhone').val()
-      const siteId = $('#patientSiteId').val()
+      const name = $("#patientName").val();
+      const gender = $("#patientGender").val();
+      const dateOfBirth = $("#patientDateOfBirth").val();
+      const patientAddress = $("#patientAddress").val();
+      const phoneNumber = $("#patientPhone").val();
+      const siteId = $("#patientSiteId").val();
 
-      const data = await mintPatient( name, gender, dateOfBirth, patientAddress, phoneNumber, siteId);
-      const keys = ["Patient ID"]
+      const data = await mintPatient(
+        name,
+        gender,
+        dateOfBirth,
+        patientAddress,
+        phoneNumber,
+        siteId
+      );
+      const keys = ["Patient ID"];
 
-      const values = [getTokenId(data)]
-      initResult(keys, values)
-    }
+      const values = [getTokenId(data)];
+      initResult(keys, values);
+    };
 
     const getIdOfPatient = async () => {
-      const phoneNumber = $('#getIdPhone').val()
-      const data = await getPatientFromPhoneSC(phoneNumber)
-      const keys = ["Patient ID"]
-      const values = [data]
-      initResult(keys, values)
-    }
+      const phoneNumber = $("#getIdPhone").val();
+      const data = await getPatientFromPhoneSC(phoneNumber);
+      const keys = ["Patient ID"];
+      const values = [data];
+      initResult(keys, values);
+    };
 
     const getDataOfPatient = async () => {
-      const patientId = $('#patientId').val()
-      const data = await getPatientSC(patientId)
+      const patientId = $("#patientId").val();
+      const data = await getPatientSC(patientId);
 
-      const info_keys = ["Patient's name", "Patient's gender", "Patient's DoB", "Patient's address", "Patient's phone", "Time Created", "Last Modified"]
-      let info_values = [...data[0]]
-      info_values[5] = new Date(info_values[5] * 1000)
-      info_values[6] = new Date(info_values[6] * 1000)
+      const info_keys = [
+        "Patient's name",
+        "Patient's gender",
+        "Patient's DoB",
+        "Patient's address",
+        "Patient's phone",
+        "Time Created",
+        "Last Modified",
+      ];
+      let info_values = [...data[0]];
+      info_values[5] = new Date(info_values[5] * 1000);
+      info_values[6] = new Date(info_values[6] * 1000);
 
-      const list_keys = ["List of Visit ID"]
-      const list_values = [...data[1]]
-      initResult(info_keys.concat(list_keys), info_values.concat(list_values))
-    }
+      const list_keys = ["List of Visit ID"];
+      const list_values = [...data[1]];
+      initResult(info_keys.concat(list_keys), info_values.concat(list_values));
+    };
 
     // VISIT
     const createVisit = async () => {
-      const patientId = $('#visitPatientId').val()
-      const data = await mintVisit(patientId)
-      const keys = ["Visit ID"]
-      const values = [getTokenId(data)]
-      initResult(keys, values)
-    }
+      const patientId = $("#visitPatientId").val();
+      const data = await mintVisit(patientId);
+      const keys = ["Visit ID"];
+      const values = [getTokenId(data)];
+      initResult(keys, values);
+    };
 
     const getDataOfVisit = async () => {
-      const patientId = $('#visitId').val()
-      const data = await getVisitSC(patientId)
-      const keys = ["Time created", "Prescription ID", "List Test Result"]
-      let values = data
-      values[0] = new Date(values[0] * 1000)
-      initResult(keys, values)
-    }
+      const patientId = $("#visitId").val();
+      const data = await getVisitSC(patientId);
+      const keys = ["Time created", "Prescription ID", "List Test Result"];
+      let values = data;
+      values[0] = new Date(values[0] * 1000);
+      initResult(keys, values);
+    };
 
     // TEST RESULT
     const createTest = async () => {
-      const name = $('#testResultName').val()
-      const result = $('#testResult').val()
-      const visitId = $('#testResultVisitId').val()
-      const data = await mintTestResult(name, result, visitId)
-      const keys = ["Test ID"]
-      const values = [getTokenId(data)]
-      initResult(keys, values)
-    }
+      const name = $("#testResultName").val();
+      const result = $("#testResult").val();
+      const visitId = $("#testResultVisitId").val();
+      const data = await mintTestResult(name, result, visitId);
+      const keys = ["Test ID"];
+      const values = [getTokenId(data)];
+      initResult(keys, values);
+    };
 
     const getDataOfTest = async () => {
-      const testId = $('#testResultId').val()
-      const data = await getTestResultSC(testId)
-      const keys = ["Test", "Result", "Time created"]
-      let values = data
-      values[2] = new Date(values[2] * 1000)
-      initResult(keys, values)
-    }
+      const testId = $("#testResultId").val();
+      const data = await getTestResultSC(testId);
+      const keys = ["Test", "Result", "Time created"];
+      let values = data;
+      values[2] = new Date(values[2] * 1000);
+      initResult(keys, values);
+    };
 
     //  PRESCRIPTION
     const createPrescription = async () => {
-      const listIdStr = $('#prescriptionListId').val()
-      const listId = listIdStr.split(',').map((item) => {
-        return Number(item)
-      })
-      const visitId = $('#prescriptionVisitId').val()
-      const data = await mintPrescription( listId, visitId)
-      const keys = ["Prescription ID"]
-      const values = [getTokenId(data)]
-      initResult(keys, values)
-    }
+      const listIdStr = $("#prescriptionListId").val();
+      const listId = listIdStr.split(",").map((item) => {
+        return Number(item);
+      });
+      const visitId = $("#prescriptionVisitId").val();
+      const data = await mintPrescription(listId, visitId);
+      const keys = ["Prescription ID"];
+      const values = [getTokenId(data)];
+      initResult(keys, values);
+    };
 
     const setPaidOfPrescription = async () => {
-      const prescriptionId = $('#prescriptionIdSetPaid').val()
-      const data = await setPaidPrescriptionSC(prescriptionId )
-      const keys = ["Pay"]
-      const values = ["Done"]
-      initResult(keys, values)
-    }
+      const prescriptionId = $("#prescriptionIdSetPaid").val();
+      const data = await setPaidPrescriptionSC(prescriptionId);
+      const keys = ["Pay"];
+      const values = ["Done"];
+      initResult(keys, values);
+    };
 
     const getPrescriptionData = async () => {
-      const prescriptionId = $('#prescriptionId').val()
-      const data = await getPrescriptionSC( prescriptionId )
-      const keys = ["Paid Status", "Time Created", "List Medicine"]
-      // const info_keys = 
-      let values = data
-      values = values[0].concat([values[1]])
-      values[1] = new Date(values[1]*1000)
-      initResult(keys, values)
-    }
+      const prescriptionId = $("#prescriptionId").val();
+      const data = await getPrescriptionSC(prescriptionId);
+      const keys = ["Paid Status", "Time Created", "List Medicine"];
+      // const info_keys =
+      let values = data;
+      values = values[0].concat([values[1]]);
+      values[1] = new Date(values[1] * 1000);
+      initResult(keys, values);
+    };
 
     // MEDICINE
     const createMedicine = async () => {
-      const name = $('#medicineNameCreate').val()
-      const amount = $('#medicineAmountCreate').val()
-      const data = await mintMedicine(name, amount )
-      const keys = ["Medicine ID"]
-      const values = [getTokenId(data)]
-      initResult(keys, values)
-    }
+      const name = $("#medicineNameCreate").val();
+      const amount = $("#medicineAmountCreate").val();
+      const data = await mintMedicine(name, amount);
+      const keys = ["Medicine ID"];
+      const values = [getTokenId(data)];
+      initResult(keys, values);
+    };
 
     const updateMedicine = async () => {
-      const medicineId = $('#medicineIdUpdate').val()
-      const name = $('#medicineNameUpdate').val()
-      const amount = $('#medicineAmountUpdate').val()
-      const data = await updateMedicineSC(medicineId, name, amount )
-      const keys = ["Update Medicine"]
-      const values = ["Done"]
-      initResult(keys, values)
-    }
+      const medicineId = $("#medicineIdUpdate").val();
+      const name = $("#medicineNameUpdate").val();
+      const amount = $("#medicineAmountUpdate").val();
+      const data = await updateMedicineSC(medicineId, name, amount);
+      const keys = ["Update Medicine"];
+      const values = ["Done"];
+      initResult(keys, values);
+    };
 
     const getMedicineHistory = async () => {
-      const medicineId = $('#medicineIDGetHistory').val()
-      const data = await getMedicineHistorySC(medicineId)
-      const keys = ["History changes"]
-      const values = [data]
-      initResult(keys, values)
-    }
+      const medicineId = $("#medicineIDGetHistory").val();
+      const data = await getMedicineHistorySC(medicineId);
+      const keys = ["History changes"];
+      const values = [data];
+      initResult(keys, values);
+    };
 
     const getMedicineData = async () => {
-      const medicineId = $('#medicineIDGet').val()
-      const data = await getMedicineSC(medicineId)
-      const keys = ["Name", "Amount"]
-      const values = data
-      
-      initResult(keys, values)
-    }
+      const medicineId = $("#medicineIDGet").val();
+      const data = await getMedicineSC(medicineId);
+      const keys = ["Name", "Amount"];
+      const values = data;
+
+      initResult(keys, values);
+    };
 
     // AUTHENTICATOR
     // const getUserRole = async (userAddress) => {
@@ -1005,50 +1206,96 @@
     //   return(myJson);
     // }
 
-    
     // getUserRole(userAddress).then((data) => {
     //   alert(JSON.stringify(data))
     // });
     const redirect = async () => {
       window.location = `./index.html`;
     };
-    const checkRole = async () => {
-      const userAddress = window.location.search.split('?address=')[1];
-      const accounts = await getCurrentAccounts()
-      if (userAddress != accounts[0]){
-        alert("Hacker found!")
-        redirect();
 
-      }
-    }
-    checkRole().then();
+    const disconnectAll = () => {
+      window.ethereum.currentProvider.disconnect();
+    };
 
     let totalRows = 0;
     const clearText = () => {
       const rowToDelete = totalRows;
-      $("#result-p-0").text('');
-      for (let i=0; i<rowToDelete; i++) {
+      $("#result-p-0").text("");
+      for (let i = 0; i < rowToDelete; i++) {
         $(`#result-p-r`).remove();
         totalRows -= 1;
       }
     };
     const initResult = (keys, values) => {
-      clearText()
+      clearText();
       $("#result-p-0").text(`${keys[0]}: ${values[0]}`);
       rows = keys.length;
-      for (let i=1; i<rows; i++) {
-        $('#result-p tr:last').after(`
+      for (let i = 1; i < rows; i++) {
+        $("#result-p tr:last").after(`
           <tr id="result-p-r"><td class="my-td">${keys[i]}: ${values[i]}</td></tr>
         `);
       }
-      totalRows += (rows-1);
-
+      totalRows += rows - 1;
     };
 
     const getTokenId = (Tx) => {
       return Tx.events.Transfer.returnValues["tokenId"];
-    }
-    
-  </script>
+    };
 
+    const showSiteTable = () => {
+      $(".site-table").show();
+      $(".patient-table").hide();
+      $(".visit-table").hide();
+      $(".test-result-table").hide();
+      $(".prescription-table").hide();
+      $(".medicine-table").hide();
+    };
+    const showPatientTable = () => {
+      $(".site-table").hide();
+      $(".patient-table").show();
+      $(".visit-table").hide();
+      $(".test-result-table").hide();
+      $(".prescription-table").hide();
+      $(".medicine-table").hide();
+    };
+    const showVisitTable = () => {
+      $(".site-table").hide();
+      $(".patient-table").hide();
+      $(".visit-table").show();
+      $(".test-result-table").hide();
+      $(".prescription-table").hide();
+      $(".medicine-table").hide();
+    };
+    const showTestResultTable = () => {
+      $(".site-table").hide();
+      $(".patient-table").hide();
+      $(".visit-table").hide();
+      $(".test-result-table").show();
+      $(".prescription-table").hide();
+      $(".medicine-table").hide();
+    };
+    const showPrescriptionTable = () => {
+      $(".site-table").hide();
+      $(".patient-table").hide();
+      $(".visit-table").hide();
+      $(".test-result-table").hide();
+      $(".prescription-table").show();
+      $(".medicine-table").hide();
+    };
+    const showMedicineTable = () => {
+      $(".site-table").hide();
+      $(".patient-table").hide();
+      $(".visit-table").hide();
+      $(".test-result-table").hide();
+      $(".prescription-table").hide();
+      $(".medicine-table").show();
+    };
+    showSiteTable();
+    // window.ethereum.on("onDisc")
+    window.ethereum.on("accountsChanged", function (accounts) {
+      if (!accounts.length) {
+        redirect();
+      }
+    });
+  </script>
 </html>
