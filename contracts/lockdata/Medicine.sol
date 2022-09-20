@@ -59,6 +59,7 @@ contract Medicine is ERC721Base, IMedicine {
         returns (uint256)
     {
         uint256 tokenId = super.mint();
+
         _medicineData[tokenId] = MedicineStruct(name, amount);
         _medicineHistory[tokenId].push(tokenId);
         _isMedicineHistory[tokenId] = false;
