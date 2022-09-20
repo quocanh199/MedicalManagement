@@ -34,6 +34,7 @@ contract Medicine is ERC721Base, IMedicine {
                 !_isMedicineLocked[medicineIds[i]],
                 "Medicine is already locked"
             );
+
             require(
                 ownerOf(medicineIds[i]) == senderAddress,
                 "Not owner of Medicine"
@@ -61,7 +62,7 @@ contract Medicine is ERC721Base, IMedicine {
         _medicineData[tokenId] = MedicineStruct(name, amount);
         _medicineHistory[tokenId].push(tokenId);
         _isMedicineHistory[tokenId] = false;
- 
+
         return tokenId;
     }
 
